@@ -28,6 +28,7 @@ public class Servlet_profile extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("/WEB-INF/myProfile.jsp").forward(request, response);
 
+
 	}
 
 	/**
