@@ -27,7 +27,7 @@ public class Servlet_account_creation extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/creationProfil.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/creationProfile.jsp");
 			rd.forward(request, response);
 	}
 

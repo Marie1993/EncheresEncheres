@@ -11,14 +11,14 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Servlet_profil
  */
-@WebServlet("/Servlet_profil")
-public class Servlet_profil extends HttpServlet {
+@WebServlet("/Servlet_profile")
+public class Servlet_profile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public Servlet_profil() {
+    public Servlet_profile() {
         // TODO Auto-generated constructor stub
     }
 
@@ -26,7 +26,7 @@ public class Servlet_profil extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/MonProfil.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/MyProfile.jsp").forward(request, response);
 
 	}
 

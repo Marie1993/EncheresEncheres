@@ -34,7 +34,7 @@ public class Servlet_login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/connexion.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/connection.jsp").forward(request, response);
 
 	}
 
@@ -49,10 +49,10 @@ public class Servlet_login extends HttpServlet {
 		UsersManager UsersManager = new UsersManager();
 		try {
 			boolean connection = UsersManager.LogIn(id, password);
-			// Si on est connecté, ça redirige vers la page d'accueil.
+			// Si on est connectï¿½, ï¿½a redirige vers la page d'accueil.
 			if (connection != true) {
-				request.setAttribute("connexion", "Nous n'avons pas pu vous connecter, veuillez réessayer");
-				request.getRequestDispatcher("/WEB-INF/connexion.jsp").forward(request, response);
+				request.setAttribute("connexion", "Nous n'avons pas pu vous connecter, veuillez rï¿½essayer");
+				request.getRequestDispatcher("/WEB-INF/connection.jsp").forward(request, response);
 			}
 
 			else {
@@ -60,7 +60,7 @@ public class Servlet_login extends HttpServlet {
 				Users user = UsersManager.Select(password);
 				session.setAttribute("User", user);
 				session.setAttribute("connexion",true);
-				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/ACCUEIL.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/home.jsp");
 				rd.forward(request,  response);
 			}
 			// Sinon, cela affiche un message d'erreur.
