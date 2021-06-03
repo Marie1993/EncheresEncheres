@@ -19,7 +19,8 @@
 
 
 	<c:if test="${sessionScope.connexion != null}">
-    <a href="/EncheresEncheres/Servlet_profil">Mon profil</a>
+    <a href="/EncheresEncheres/Servlet_profile">Mon profil</a>
+
 </c:if>
 
 	<h2>Liste des enchères</h2>
@@ -33,7 +34,6 @@
 	<button>Rechercher</button>
 
 	<h4>Catégorie :</h4>
-<<<<<<< Updated upstream
 
 	<nav>
 		<ul>
@@ -46,7 +46,7 @@
 				</ul>
 	</nav>
 
-=======
+
 	
 		<nav>
 			<ul>
@@ -55,7 +55,7 @@
 						<li><a href="#">Informatique</a></li>
 						<li><a href="#">Ameublement</a></li>
 						<li><a href="#">Vêtements</a></li>
-						<li><a href="#">Sport et Loisir</a></li>
+						<li><a href="#">Sport et Loisirs</a></li>
 					</ul>
 		</nav>
 	
@@ -68,6 +68,5 @@
 	
 	
 	
->>>>>>> Stashed changes
 </body>
 </html>
