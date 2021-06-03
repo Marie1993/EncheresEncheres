@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+.error_message
+
+{
+	color: red;
+}
+
+.form
+{
+	display: flex;
+	flex-direction: column;
+	align-items : center;
+	justify-content : space-around;
+	height : 150px;
+	width : 25em;
+	margin : 1em;
+	border: 1px solid black;
+}
+
+.password
+{
+	display : flex;
+	flex-direction : row;
+	width:18em;
+	justify-content : space-around;
+}
+
+.nickname
+{
+	display : flex;
+	flex-direction : row;
+	width:22em;
+	justify-content : space-around;
+}
+
+.body
+{
+	display : flex;
+	flex-direction : column;
+	justify-content : center;
+	align-items : center;
+}
+
+.profil
+
+{
+	display : flex;
+	flex-direction : column;
+	justify-content : space-around;
+	align-items : center;
+	height: 300px;
+}

@@ -55,6 +55,13 @@ public class UserCnxDAOJdbcImpl implements UserDAO {
 	}
 
 
+	@Override
+	public Users Select(String password) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 	
 	
 	

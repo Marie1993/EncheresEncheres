@@ -31,5 +31,11 @@ public class UsersManager {
 		
 	}
 	
+	public Users Select (String password) throws SQLException
+	{
+		return UserDAO.Select(password);
+	}
+	
+	
 
 }
