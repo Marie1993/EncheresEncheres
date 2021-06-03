@@ -27,7 +27,7 @@ public class Servlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/ACCUEIL.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/home.jsp");
 		rd.forward(request,  response);
 	}
 
