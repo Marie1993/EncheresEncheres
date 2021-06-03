@@ -49,9 +49,9 @@ public class Servlet_login extends HttpServlet {
 		UsersManager UsersManager = new UsersManager();
 		try {
 			boolean connection = UsersManager.LogIn(id, password);
-			// Si on est connectï¿½, ï¿½a redirige vers la page d'accueil.
+			// Si on est connecté, ça redirige vers la page d'accueil.
 			if (connection != true) {
-				request.setAttribute("connexion", "Nous n'avons pas pu vous connecter, veuillez rï¿½essayer");
+				request.setAttribute("connexion", "Nous n'avons pas pu vous connecter, veuillez réessayer");
 				request.getRequestDispatcher("/WEB-INF/connection.jsp").forward(request, response);
 			}
 

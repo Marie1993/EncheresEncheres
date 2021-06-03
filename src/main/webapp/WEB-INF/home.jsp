@@ -55,7 +55,7 @@
 						<li><a href="#">Informatique</a></li>
 						<li><a href="#">Ameublement</a></li>
 						<li><a href="#">Vêtements</a></li>
-						<li><a href="#">Sport et Loisir</a></li>
+						<li><a href="#">Sport et Loisirs</a></li>
 					</ul>
 		</nav>
 	
