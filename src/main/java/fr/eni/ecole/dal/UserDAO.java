@@ -4,6 +4,7 @@
 package fr.eni.ecole.dal;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import fr.eni.ecole.bo.Users;
 
@@ -22,10 +23,12 @@ public interface UserDAO {
 	boolean logIn(String nickname, String password) throws SQLException;
 
 	
-	/**insertion nouvel utilisateur dans la base de donnÃ©e
+	/**insertion nouvel utilisateur dans la base de donnée
 	 * @param user
 	 * @throws SQLException
 	 */
 	void insert(Users user) throws SQLException;
+	
+	Users Select (String password) throws SQLException;
 
 }
