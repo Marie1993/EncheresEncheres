@@ -19,7 +19,7 @@
 
 
 	<c:if test="${sessionScope.connexion != null}">
-    <a href="/EncheresEncheres/Servlet_profil">Mon profil</a>
+    <a href="/EncheresEncheres/Servlet_profile">Mon profil</a>
 </c:if>
 
 	<h2>Liste des enchères</h2>
