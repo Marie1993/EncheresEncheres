@@ -227,6 +227,37 @@ public class Users {
 		this.credit = credit;
 		this.admin = admin;
 	}
+	
+	/**
+	 * Constructeur.
+	 * @param numUser
+	 * @param nickname
+	 * @param name
+	 * @param surname
+	 * @param email
+	 * @param phone
+	 * @param numStreet
+	 * @param postalCode
+	 * @param password
+	 * @param credit
+	 * @param admin
+	 */
+	public Users(String nickname, String name, String surname, String email, String phone,
+			String numStreet, String postalCode,String city, String password, Integer credit, Boolean admin) {
+		super();
+
+		this.nickname = nickname;
+		this.name = name;
+		this.surname = surname;
+		this.email = email;
+		this.phone = phone;
+		this.numStreet = numStreet;
+		this.postalCode = postalCode;
+		this.city = city;
+		this.password = password;
+		this.credit = credit;
+		this.admin = admin;
+	}
 	/**
 	* {@inheritDoc}
 	*/

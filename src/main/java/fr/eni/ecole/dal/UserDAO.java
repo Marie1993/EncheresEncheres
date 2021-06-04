@@ -23,11 +23,11 @@ public interface UserDAO {
 	boolean logIn(String nickname, String password) throws SQLException;
 
 	
-	/**insertion nouvel utilisateur dans la base de donnée
+	/**insertion nouvel utilisateur dans la base de donnï¿½e
 	 * @param user
 	 * @throws SQLException
 	 */
-	void insert(Users user) throws SQLException;
+	void insert(Users users) throws SQLException;
 	
 	Users Select (String password) throws SQLException;
 

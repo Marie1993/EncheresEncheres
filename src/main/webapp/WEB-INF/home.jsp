@@ -13,7 +13,7 @@
 	<h1>ENI-Enchères</h1>
 
 	<c:if test="${sessionScope.connexion eq null}">
-		<a href="#">S'inscrire -</a>
+		<a href="/EncheresEncheres/Servlet_account_creation">S'inscrire -</a>
 		<a href="/EncheresEncheres/Servlet_login">Se connecter</a>
 	</c:if>
 

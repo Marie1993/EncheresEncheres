@@ -15,6 +15,7 @@ import fr.eni.ecole.bo.Users;
  *
  */
 public class UserDAOJdbcImpl implements UserDAO {
+	private static final String INSERT_USER = " insert into utilisateurs (pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,credit,administrateur) values (?,?,?,?,?,?,?,?,?,?,?)";
 	private final String LOG_IN = "SELECT pseudo FROM UTILISATEURS WHERE pseudo = ? and mot_de_passe = ? or email = ? and mot_de_passe = ?;";
 	private final String SELECT = "SELECT * FROM UTILISATEURS WHERE mot_de_passe = ?;";
 
@@ -23,7 +24,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 		return cnx;
 	}
 
-	// Méthode qui va permettre de chercher si un utilisateur est dans la BDD :
+	// Mï¿½thode qui va permettre de chercher si un utilisateur est dans la BDD :
 	// retourne true si c'est le cas, false sinon.
 	@Override
 	public boolean logIn(String id, String password) throws SQLException {
@@ -45,7 +46,28 @@ public class UserDAOJdbcImpl implements UserDAO {
 
 	@Override
 	public void insert(Users user) throws SQLException {
-		// TODO Auto-generated method stub
+		Connection cnx = seConnecter();
+		PreparedStatement pstmt = cnx.prepareStatement(INSERT_USER, PreparedStatement.RETURN_GENERATED_KEYS);
+		pstmt.setString(1, user.getNickname());
+		pstmt.setString(2, user.getName());
+		pstmt.setString(3, user.getSurname());
+		pstmt.setString(4, user.getEmail());
+		pstmt.setString(5, user.getPhone());
+		pstmt.setString(6, user.getNumStreet());
+		pstmt.setString(7, user.getPostalCode());
+		pstmt.setString(8, user.getCity());
+		pstmt.setString(9, user.getPassword());
+		pstmt.setInt(10, 0);
+		pstmt.setBoolean(11, false);
+		pstmt.executeUpdate();
+		ResultSet rs = pstmt.getGeneratedKeys();
+		if(rs.next()) {
+			user.setNumUser(rs.getInt(1));
+		}
+		
+		rs.close();
+		pstmt.close();
+		cnx.close();
 
 	}
 
