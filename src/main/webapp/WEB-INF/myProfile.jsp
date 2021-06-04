@@ -24,6 +24,7 @@
 	</header>
 
 	<div class="profil">
+		
 		<div>Pseudo : ${sessionScope ['User'].nickname}</div>
 
 		<div>Nom : ${sessionScope ['User'].name}</div>
