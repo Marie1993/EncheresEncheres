@@ -7,6 +7,7 @@
 <title>Entête non connecté</title>
 </head>
 <body>
+
 	<a href="/EncheresEncheres/Servlet">Accueil</a>
 	<a href="#">S'inscrire -</a>
 	<a href="/EncheresEncheres/Servlet_login">Se connecter</a>
