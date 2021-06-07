@@ -227,6 +227,34 @@ public class Users {
 		this.credit = credit;
 		this.admin = admin;
 	}
+	
+	/**
+	 * @param numUser
+	 * @param nickname
+	 * @param name
+	 * @param surname
+	 * @param email
+	 * @param phone
+	 * @param numStreet
+	 * @param postalCode
+	 * @param city
+	 * @param password
+	 * Constructeur pour mettre à jour le profil.
+	 */
+	public Users(Integer numUser, String nickname, String name, String surname, String email, String phone,
+			String numStreet, String postalCode, String city, String password) {
+		super();
+		this.numUser = numUser;
+		this.nickname = nickname;
+		this.name = name;
+		this.surname = surname;
+		this.email = email;
+		this.phone = phone;
+		this.numStreet = numStreet;
+		this.postalCode = postalCode;
+		this.city = city;
+		this.password = password;
+	}
 	/**
 	* {@inheritDoc}
 	*/

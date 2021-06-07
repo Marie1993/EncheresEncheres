@@ -10,16 +10,19 @@
 <title>Accueil</title>
 </head>
 <body>
-	<h1>ENI-Enchères</h1>
 
+	<header>
+		<h1>ENI-Enchères</h1>
+		
 	<c:if test="${sessionScope.connexion eq null}">
 		<%@ include file="header_notconnected.jsp"%>
 	</c:if>
 
-
 	<c:if test="${sessionScope.connexion != null}">
 		<%@ include file="header_connected.jsp"%>
 	</c:if>
+	
+	</header>
 
 	<h2>Liste des enchères</h2>
 

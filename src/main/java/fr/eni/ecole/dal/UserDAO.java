@@ -30,5 +30,7 @@ public interface UserDAO {
 	void insert(Users user) throws SQLException;
 	
 	Users Select (String password) throws SQLException;
+	
+	void Update_User (Users user) throws SQLException;
 
 }
