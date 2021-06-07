@@ -35,6 +35,13 @@ public class UsersManager {
 	{
 		return UserDAO.Select(password);
 	}
+
+
+	public void Update_User(Users user) throws SQLException {
+		UserDAO.Update_User(user);
+		
+	}
+	
 	
 	
 

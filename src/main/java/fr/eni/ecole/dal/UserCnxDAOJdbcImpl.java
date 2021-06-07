@@ -62,6 +62,13 @@ public class UserCnxDAOJdbcImpl implements UserDAO {
 	}
 
 
+	@Override
+	public void Update_User(Users user) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 	
 	
 	

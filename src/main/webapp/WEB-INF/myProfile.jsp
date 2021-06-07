@@ -25,6 +25,8 @@
 
 	<div class="profil">
 		
+		
+		
 		<div>Pseudo : ${sessionScope ['User'].nickname}</div>
 
 		<div>Nom : ${sessionScope ['User'].name}</div>
@@ -42,6 +44,8 @@
 		<div>Ville : ${sessionScope ['User'].city}</div>
 	</div>
 </div>
+
+<a href="/EncheresEncheres//Servlet_modif_profile">Modifier mon profil</a>
 
 </body>
 </html>

@@ -17,7 +17,7 @@ import fr.eni.ecole.bo.Users;
 public class UserDAOJdbcImpl implements UserDAO {
 	private final String LOG_IN = "SELECT pseudo FROM UTILISATEURS WHERE pseudo = ? and mot_de_passe = ? or email = ? and mot_de_passe = ?;";
 	private final String SELECT = "SELECT * FROM UTILISATEURS WHERE mot_de_passe = ?;";
-	private final String UPDATE_ACCOUNT = "UPDATE Utilisateurs SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ?, WHERE no_utilisateur = ? ;";
+	private final String UPDATE_ACCOUNT = "UPDATE Utilisateurs SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ? WHERE no_utilisateur = ? ;";
 
 	Connection seConnecter() throws SQLException {
 		Connection cnx = ConnectionProvider.getConnection();
@@ -76,9 +76,9 @@ public class UserDAOJdbcImpl implements UserDAO {
 		stmt.setString(6, user.getNumStreet());
 		stmt.setString(7, user.getPostalCode());
 		stmt.setString(8, user.getCity());
-		stmt.setString(8, user.getPassword());
-		stmt.setInt(9, user.getNumUser());
-		stmt.executeUpdate(UPDATE_ACCOUNT);
+		stmt.setString(9, user.getPassword());
+		stmt.setInt(10, user.getNumUser());
+		stmt.executeUpdate();
 		
 }
 }
