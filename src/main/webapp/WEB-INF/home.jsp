@@ -7,21 +7,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Accueiiiil</title>
+<title>Accueil</title>
 </head>
 <body>
-	<h1>ENI-Enchères</h1>
 
+	<header>
+		<h1>ENI-Enchères</h1>
+		
 	<c:if test="${sessionScope.connexion eq null}">
-		<a href="/EncheresEncheres/Servlet_account_creation">S'inscrire -</a>
-		<a href="/EncheresEncheres/Servlet_login">Se connecter</a>
+		<%@ include file="header_notconnected.jsp"%>
 	</c:if>
 
-
 	<c:if test="${sessionScope.connexion != null}">
-    <a href="/EncheresEncheres/Servlet_profile">Mon profil</a>
-
-</c:if>
+		<%@ include file="header_connected.jsp"%>
+	</c:if>
+	
+	</header>
 
 	<h2>Liste des enchères</h2>
 
@@ -47,26 +48,26 @@
 	</nav>
 
 
-	
-		<nav>
-			<ul>
-				<li class="deroulant"><a href="#">Toutes</a>
-					<ul class="sous">
-						<li><a href="#">Informatique</a></li>
-						<li><a href="#">Ameublement</a></li>
-						<li><a href="#">Vêtements</a></li>
-						<li><a href="#">Sport et Loisirs</a></li>
-					</ul>
-		</nav>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	<nav>
+		<ul>
+			<li class="deroulant"><a href="#">Toutes</a>
+				<ul class="sous">
+					<li><a href="#">Informatique</a></li>
+					<li><a href="#">Ameublement</a></li>
+					<li><a href="#">Vêtements</a></li>
+					<li><a href="#">Sport et Loisirs</a></li>
+				</ul>
+	</nav>
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

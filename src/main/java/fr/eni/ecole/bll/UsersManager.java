@@ -24,25 +24,13 @@ public class UsersManager {
 		return UserDAO.logIn(nickname, password);
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public Users addUsers ( String nickname, String name, String surname, String email, String phone, String numStreet, String postalCode, String city, String password, Integer credit, Boolean admin ) throws SQLException {
-		
-		//businessException
-		//créer methide qui valide le mdp et mail unique .......
-		
+
+	public Users addUsers (String nickname, String name, String surname, String email, String phone, String numStreet, String postalCode, String city, String password, Integer credit, Boolean admin ) throws SQLException {
+
+		Users users = new Users ();
 		this.validateNickName();
 		this.validateEmail();
 		
-		Users users = new Users();
 		users.setNickname(nickname);
 		users.setName(name);
 		users.setSurname(surname);
@@ -60,10 +48,7 @@ public class UsersManager {
 			
 	}
 	
-	
-	
-	
-	
+
 	private void validateEmail() {
 		// TODO Auto-generated method stub
 		
@@ -78,18 +63,17 @@ public class UsersManager {
 
 
 
-
-
-
-
-
-
-
-
 	public Users Select (String password) throws SQLException
 	{
 		return UserDAO.Select(password);
 	}
+
+
+	public void Update_User(Users user) throws SQLException {
+		UserDAO.Update_User(user);
+		
+	}
+	
 	
 	
 
