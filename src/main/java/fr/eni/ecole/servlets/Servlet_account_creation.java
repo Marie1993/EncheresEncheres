@@ -74,12 +74,13 @@ public class Servlet_account_creation extends HttpServlet {
 		UsersManager usersManager = new UsersManager();
 		try {
 			usersManager.addUsers(nickname, name, surname, email, phone, numStreet, postalCode, city, password, credit, admin);
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/connection.jsp");
+			rd.forward(request, response);
 			//si tout se passe bien je vais vers la page de consultation profil créé
 		} catch (SQLException e) { // businessException
 			//sinon retour a la page d'ajout + affichage des erreurs
 			e.printStackTrace();
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/creationProfile.jsp");
-			rd.forward(request, response);
+			
 		}
 	
 	}

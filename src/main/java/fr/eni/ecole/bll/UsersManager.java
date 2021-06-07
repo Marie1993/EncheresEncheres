@@ -26,7 +26,6 @@ public class UsersManager {
 	
 	
 	public Users addUsers (String nickname, String name, String surname, String email, String phone, String numStreet, String postalCode, String city, String password, Integer credit, Boolean admin ) throws SQLException {
-		Users user = new Users();
 	
 
 		this.validateNickName();

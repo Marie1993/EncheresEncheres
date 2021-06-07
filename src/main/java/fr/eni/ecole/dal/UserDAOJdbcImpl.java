@@ -16,7 +16,8 @@ import fr.eni.ecole.bo.Users;
  */
 public class UserDAOJdbcImpl implements UserDAO {
 	private final String LOG_IN = "SELECT pseudo FROM UTILISATEURS WHERE pseudo = ? and mot_de_passe = ? or email = ? and mot_de_passe = ?;";
-	private final String SELECT = "SELECT * FROM UTILISATEURS WHERE mot_de_passe = ?;";
+	private final String SELECT = "SELECT * FROM UTILISATEURS WHERE pseudo = ? or email = ?;";
+	private static final String INSERT_USER = " insert into utilisateurs (pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,credit,administrateur) values (?,?,?,?,?,?,?,?,?,?,?)";
 	private final String UPDATE_ACCOUNT = "UPDATE Utilisateurs SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ? WHERE no_utilisateur = ? ;";
 
 	Connection seConnecter() throws SQLException {
@@ -42,21 +43,49 @@ public class UserDAOJdbcImpl implements UserDAO {
 		else
 			return false;
 
+	}	
+	
+	@Override
+	public void insert (Users user) throws SQLException  {
+		
+		Connection cnx = null;
+		try {
+			cnx = ConnectionProvider.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		PreparedStatement pstmt = cnx.prepareStatement(INSERT_USER, PreparedStatement.RETURN_GENERATED_KEYS);
+		pstmt.setString(1, user.getNickname());
+		pstmt.setString(2, user.getName());
+		pstmt.setString(3, user.getSurname());
+		pstmt.setString(4, user.getEmail());
+		pstmt.setString(5, user.getPhone());
+		pstmt.setString(6, user.getNumStreet());
+		pstmt.setString(7, user.getPostalCode());
+		pstmt.setString(8, user.getCity());
+		pstmt.setString(9, user.getPassword());
+		pstmt.setInt(10, 50);
+		pstmt.setBoolean(11, user.getAdmin());
+		pstmt.executeUpdate();
+		ResultSet rs = pstmt.getGeneratedKeys();
+		if(rs.next()) {
+			user.setNumUser(rs.getInt(1));
+		}
+		
+		rs.close();
+		pstmt.close();
+		cnx.close();
 	}
 
 	@Override
-	// commentaire 
-	public void insert(Users user) throws SQLException {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public Users Select(String password) throws SQLException {
+	public Users Select(String id) throws SQLException {
 		Users user = null;
 		Connection cnx = seConnecter();
 		PreparedStatement stmt = cnx.prepareStatement(SELECT);
-		stmt.setString(1, password);
+		stmt.setString(1, id);
+		stmt.setString(2, id);
 		ResultSet rs = stmt.executeQuery();
 		if (rs.next())
 			user = new Users(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),

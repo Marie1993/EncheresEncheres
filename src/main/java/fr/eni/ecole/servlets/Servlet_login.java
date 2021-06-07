@@ -57,7 +57,7 @@ public class Servlet_login extends HttpServlet {
 
 			else {
 				HttpSession session = request.getSession();
-				Users user = UsersManager.Select(password);
+				Users user = UsersManager.Select(id);
 				session.setAttribute("User", user);
 				session.setAttribute("connexion",true);
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/home.jsp");

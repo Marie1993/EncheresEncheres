@@ -27,7 +27,7 @@ public interface UserDAO {
 	 * @param user
 	 * @throws SQLException
 	 */
-	void insert(Users user) throws SQLException;
+	void insert(Users users) throws SQLException;
 	
 	Users Select (String password) throws SQLException;
 	
