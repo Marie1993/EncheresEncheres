@@ -24,13 +24,29 @@ public class UsersManager {
 		return UserDAO.logIn(nickname, password);
 	}
 	
+
+	public Users addUsers (String nickname, String name, String surname, String email, String phone, String numStreet, String postalCode, String city, String password, Integer credit, Boolean admin ) throws SQLException {
 	
-	public void addUsers ( Integer numUser, String nickname, String name, String surname, String email, String phone, String numStreet, String postalCode, String city, String password, Integer credit, Boolean admin ) {
-		Users user = new Users();
+		Users users = new Users ();
+		this.validateNickName();
+		this.validateEmail();
+		return users;
 		
 		
 	}
 	
+	private void validateEmail() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	private void validateNickName() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 	public Users Select (String password) throws SQLException
 	{
 		return UserDAO.Select(password);

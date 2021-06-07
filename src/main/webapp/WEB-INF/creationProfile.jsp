@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<form method="post" action="/Encheres/Servlet_account_creation">
+<form method="post" action="/EncheresEncheres/Servlet_account_creation">
 
   <h1> Inscription</h1>
   
