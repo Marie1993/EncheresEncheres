@@ -77,6 +77,8 @@
 			<input type="submit" value="Valider">
 		</div>
 	</form>
+	
+	<a href = "/EncheresEncheres/Servlet_delete_account">Supprimer mon compte</a>
 
 </body>
 </html>

@@ -42,6 +42,7 @@ public class Servlet_modif_profile extends HttpServlet {
 		UsersManager UsersManager = new UsersManager();
 		
 		int numUser = Integer.parseInt(request.getParameter("numUser"));
+		
 		Users user = new Users (numUser, request.getParameter("pseudo"),request.getParameter("name"),request.getParameter("surname"),request.getParameter("email"),request.getParameter("phone"),request.getParameter("numStreet"),request.getParameter("postalCode"),request.getParameter("city"), request.getParameter("password"));
 		try {
 			UsersManager.Update_User(user);

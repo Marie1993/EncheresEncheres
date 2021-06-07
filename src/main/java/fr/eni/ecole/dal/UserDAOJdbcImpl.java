@@ -19,6 +19,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 	private final String SELECT = "SELECT * FROM UTILISATEURS WHERE pseudo = ? or email = ?;";
 	private static final String INSERT_USER = " insert into utilisateurs (pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,credit,administrateur) values (?,?,?,?,?,?,?,?,?,?,?)";
 	private final String UPDATE_ACCOUNT = "UPDATE Utilisateurs SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ? WHERE no_utilisateur = ? ;";
+	private final String DELETE_USER = "DELETE FROM Utilisateurs WHERE no_utilisateur = ?;";
 
 	Connection seConnecter() throws SQLException {
 		Connection cnx = ConnectionProvider.getConnection();
@@ -112,4 +113,15 @@ public class UserDAOJdbcImpl implements UserDAO {
 		stmt.executeUpdate();
 		
 }
+
+	@Override
+	public void Delete_User(int numUser) throws SQLException {
+		Connection cnx = seConnecter();
+		PreparedStatement stmt = cnx.prepareStatement(DELETE_USER);
+		stmt.setInt(1, numUser);
+		stmt.executeUpdate();
+		stmt.close();
+		cnx.close();
+		
+	}
 }

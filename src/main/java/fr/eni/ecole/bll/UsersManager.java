@@ -74,6 +74,11 @@ public class UsersManager {
 		
 	}
 	
+	public void Delete_User(int numUser) throws SQLException {
+		UserDAO.Delete_User(numUser);
+		
+	}
+	
 	
 	
 
