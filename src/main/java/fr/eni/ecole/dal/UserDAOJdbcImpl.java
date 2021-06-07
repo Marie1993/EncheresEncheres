@@ -45,6 +45,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 	}
 
 	@Override
+	// commentaire 
 	public void insert(Users user) throws SQLException {
 		// TODO Auto-generated method stub
 
