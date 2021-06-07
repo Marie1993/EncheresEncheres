@@ -24,14 +24,13 @@ public class UsersManager {
 		return UserDAO.logIn(nickname, password);
 	}
 	
-	
-	public Users addUsers (String nickname, String name, String surname, String email, String phone, String numStreet, String postalCode, String city, String password, Integer credit, Boolean admin ) throws SQLException {
-	
 
+	public Users addUsers (String nickname, String name, String surname, String email, String phone, String numStreet, String postalCode, String city, String password, Integer credit, Boolean admin ) throws SQLException {
+
+		Users users = new Users ();
 		this.validateNickName();
 		this.validateEmail();
 		
-		Users users = new Users();
 		users.setNickname(nickname);
 		users.setName(name);
 		users.setSurname(surname);
@@ -49,10 +48,7 @@ public class UsersManager {
 			
 	}
 	
-	
-	
-	
-	
+
 	private void validateEmail() {
 		// TODO Auto-generated method stub
 		

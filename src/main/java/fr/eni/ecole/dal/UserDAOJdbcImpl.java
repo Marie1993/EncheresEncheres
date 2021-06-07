@@ -25,7 +25,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 		return cnx;
 	}
 
-	// Méthode qui va permettre de chercher si un utilisateur est dans la BDD :
+	// MÃ©thode qui va permettre de chercher si un utilisateur est dans la BDD :
 	// retourne true si c'est le cas, false sinon.
 	@Override
 	public boolean logIn(String id, String password) throws SQLException {
@@ -46,6 +46,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 	}	
 	
 	@Override
+
 	public void insert (Users user) throws SQLException  {
 		
 		Connection cnx = null;
