@@ -39,6 +39,9 @@ public class UsersManager {
 		//businessException
 		//créer methide qui valide le mdp et mail unique .......
 		
+		this.validateNickName();
+		this.validateEmail();
+		
 		Users users = new Users();
 		users.setNickname(nickname);
 		users.setName(name);
@@ -49,7 +52,6 @@ public class UsersManager {
 		users.setPostalCode(postalCode);
 		users.setCity(city);
 		users.setPassword(password);
-		
 		users.setCredit(credit);
 		users.setAdmin(admin);
 		this.UserDAO.insert(users);
@@ -62,6 +64,28 @@ public class UsersManager {
 	
 	
 	
+	private void validateEmail() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	private void validateNickName() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+
+
+
+
+
+
+
 	public Users Select (String password) throws SQLException
 	{
 		return UserDAO.Select(password);

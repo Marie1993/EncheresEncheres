@@ -37,7 +37,7 @@ public class Servlet_creation_article extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String articleName = request.getParameter("nomArticle");
+		String articleName = request.getParameter("nameArticle");
 		System.out.println(articleName);
 		String description= request.getParameter("description");
 		System.out.println(description);

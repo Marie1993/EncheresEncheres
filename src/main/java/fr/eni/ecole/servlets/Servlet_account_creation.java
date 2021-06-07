@@ -64,29 +64,17 @@ public class Servlet_account_creation extends HttpServlet {
 		
 		//j'ajoute l'utilisateur
 		
-		Users users = new Users(nickname, name, surname, email, phone, numStreet, postalCode, city, password, credit, admin);
-		System.out.println(users.getCity());
-		System.out.println(users.getName());
 		
-		UserDAOJdbcImpl userDAOJdbcImpl = new UserDAOJdbcImpl();
-		
+		UsersManager usersManager = new UsersManager();
 		try {
-			userDAOJdbcImpl.insert(users);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		//UsersManager usersManager = new UsersManager();
-		//try {
-		//	usersManager.addUsers(nickname, name, surname, email, phone, numStreet, postalCode, city, password, credit, admin);
+			usersManager.addUsers(nickname, name, surname, email, phone, numStreet, postalCode, city, password, credit, admin);
 			//si tout se passe bien je vais vers la page de consultation profil créé
-		//} catch (SQLException e) { // businessException
-		//	//sinon retour a la page d'ajout + affichage des erreurs
-		//	e.printStackTrace();
-		//	RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/creationProfile.jsp");
-		//	rd.forward(request, response);
-		//}
+		} catch (SQLException e) { // businessException
+			//sinon retour a la page d'ajout + affichage des erreurs
+			e.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/creationProfile.jsp");
+			rd.forward(request, response);
+		}
 	
 	}
 

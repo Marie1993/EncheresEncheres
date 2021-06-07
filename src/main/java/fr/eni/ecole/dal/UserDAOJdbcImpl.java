@@ -45,6 +45,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 	}
 
 	@Override
+	// commentaire 
 	public void insert(Users user) throws SQLException {
 		Connection cnx = seConnecter();
 		PreparedStatement pstmt = cnx.prepareStatement(INSERT_USER, PreparedStatement.RETURN_GENERATED_KEYS);
