@@ -22,6 +22,10 @@ public class Users {
 	private String password;
 	private Integer credit;
 	private Boolean admin;
+	
+	
+	
+	
 	/**
 	 * Getter pour numUser.
 	 * @return the numUser
@@ -254,6 +258,23 @@ public class Users {
 		this.postalCode = postalCode;
 		this.city = city;
 		this.password = password;
+	}
+	/**
+	 * @param numUser
+	 * @param nickname
+	 * Pour utiliser dans la classe ArticleSold
+	 */
+	public Users(Integer numUser, String nickname) {
+		super();
+		this.numUser = numUser;
+		this.nickname = nickname;
+	}
+	/**
+	 * @param numUser
+	 */
+	public Users(Integer numUser) {
+		super();
+		this.numUser = numUser;
 	}
 	/**
 	* {@inheritDoc}

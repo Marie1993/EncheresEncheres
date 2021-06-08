@@ -10,8 +10,8 @@ package fr.eni.ecole.bo;
  * @date 1 juin 2021 - 10:35:19
  */
 public class Withdrawal {
-	private Integer streetNum;
-	private Integer postalCode;
+	private String streetNum;
+	private String postalCode;
 	private String cityName;
 	/**
 	 * Constructeur.
@@ -23,14 +23,14 @@ public class Withdrawal {
 	 * Getter pour streetNum.
 	 * @return the streetNum
 	 */
-	public Integer getStreetNum() {
+	public String getStreetNum() {
 		return streetNum;
 	}
 	/**
 	 * Getter pour postalCode.
 	 * @return the postalCode
 	 */
-	public Integer getPostalCode() {
+	public String getPostalCode() {
 		return postalCode;
 	}
 	/**
@@ -44,14 +44,14 @@ public class Withdrawal {
 	 * Setter pour streetNum.
 	 * @param streetNum the streetNum to set
 	 */
-	public void setStreetNum(Integer streetNum) {
+	public void setStreetNum(String streetNum) {
 		this.streetNum = streetNum;
 	}
 	/**
 	 * Setter pour postalCode.
 	 * @param postalCode the postalCode to set
 	 */
-	public void setPostalCode(Integer postalCode) {
+	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
 	}
 	/**
@@ -67,7 +67,7 @@ public class Withdrawal {
 	 * @param postalCode
 	 * @param cityName
 	 */
-	public Withdrawal(Integer streetNum, Integer postalCode, String cityName) {
+	public Withdrawal(String streetNum, String postalCode, String cityName) {
 		super();
 		this.streetNum = streetNum;
 		this.postalCode = postalCode;

@@ -60,17 +60,25 @@
 		<legend>Retrait</legend>
 		
 		<div>
-			<label for="street">Rue :</label>
+			<label for="numStreet">Rue :</label> <input type="text"
+				name="numStreet" id="numStreet"
+				value="${sessionScope ['User'].numStreet}"
+				placeholder="${sessionScope ['User'].numStreet}" />
 		</div>
-		<input type="text" name="street" id="street" />
+
 		<div>
-			<label for="postalCode">Code postal :</label>
+			<label for="postalCode">Code postal :</label> <input type="text"
+				name="postalCode" id="postalCode"
+				value="${sessionScope ['User'].postalCode}"
+				placeholder="${sessionScope ['User'].postalCode}" />
 		</div>
-		<input type="text" name="postalCode" id="postalCode" />
-			<div>
-			<label for="city">Ville :</label>
+		<div>
+			<label for="city">Ville :</label><input type="text" name="city"
+				id="city" value="${sessionScope ['User'].city}"
+				placeholder="${sessionScope ['User'].city}" />
 		</div>
-		<input type="text" name="city" id="city" />
+		
+		
 		
 		</fieldset>
 

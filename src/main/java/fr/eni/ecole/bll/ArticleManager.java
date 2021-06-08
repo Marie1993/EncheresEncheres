@@ -21,11 +21,10 @@ public class ArticleManager {
 		article.setArticleName(articleName);
 		article.setDescription(description);
 		article.setAuctionStartingDate(auctionStartingDate);
-		article.setAutionEndingDate(autionEndingDate);
+		article.setAuctionEndingDate(autionEndingDate);
 		article.setStartingPrice(startingPrice);
 		article.setSellingPrice(sellingPrice); // pour l'instant null
-		article.setNumCategory(numCategory);
-		article.setNumUser(numUser);
+
 		this.articleDAO.insert(article);
 		
 		return article;
