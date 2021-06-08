@@ -16,7 +16,7 @@ public class ArticleSold {
 	private String articleName;
 	private String description;
 	private LocalDateTime auctionStartingDate;
-	private LocalDateTime autionEndingDate;
+	private LocalDateTime auctionEndingDate;
 	private Integer startingPrice;
 	private Integer sellingPrice;
 	private Boolean isSold;
@@ -41,19 +41,19 @@ public class ArticleSold {
 	 * @param user
 	 * @param auction
 	 * @param withdrawal
+	 * Constructeur pour afficher le détail
 	 */
 	public ArticleSold(Integer articleNum, String articleName, String description, LocalDateTime auctionStartingDate,
-			LocalDateTime autionEndingDate, Integer startingPrice, Integer sellingPrice, Boolean isSold,
+			LocalDateTime autionEndingDate, Integer startingPrice, Integer sellingPrice,
 			Category category, Users user, Auction auction, Withdrawal withdrawal) {
 		super();
 		this.articleNum = articleNum;
 		this.articleName = articleName;
 		this.description = description;
 		this.auctionStartingDate = auctionStartingDate;
-		this.autionEndingDate = autionEndingDate;
+		this.auctionEndingDate = autionEndingDate;
 		this.startingPrice = startingPrice;
 		this.sellingPrice = sellingPrice;
-		this.isSold = isSold;
 		this.category = category;
 		this.user = user;
 		this.auction = auction;
@@ -74,18 +74,22 @@ public class ArticleSold {
 	 * @param autionEndingDate
 	 * @param startingPrice
 	 * @param sellingPrice
+	 * @param withdrawal2 
 	 * @param isSold
 	 */
 	public ArticleSold( String articleName, String description, LocalDateTime auctionStartingDate,
-			LocalDateTime autionEndingDate, Integer startingPrice, Integer sellingPrice) {
+			LocalDateTime autionEndingDate, Integer startingPrice, Integer sellingPrice, Users user, Category category, Withdrawal withdrawal) {
 		super();
 		
 		this.articleName = articleName;
 		this.description = description;
 		this.auctionStartingDate = auctionStartingDate;
-		this.autionEndingDate = autionEndingDate;
+		this.auctionEndingDate = autionEndingDate;
 		this.startingPrice = startingPrice;
 		this.sellingPrice = sellingPrice;
+		this.user = user;
+		this.category = category;
+		this.withdrawal = withdrawal;
 
 		
 	}
@@ -102,7 +106,7 @@ public class ArticleSold {
 		this.articleName = articleName;
 		this.description = description;
 		this.auctionStartingDate = auctionStartingDate;
-		this.autionEndingDate = autionEndingDate;
+		this.auctionEndingDate = autionEndingDate;
 		this.startingPrice = startingPrice;
 		this.sellingPrice = sellingPrice;
 		this.isSold = isSold;
@@ -139,8 +143,8 @@ public class ArticleSold {
 	 * Getter pour autionEndingDate.
 	 * @return the autionEndingDate
 	 */
-	public LocalDateTime getAutionEndingDate() {
-		return autionEndingDate;
+	public LocalDateTime getAuctionEndingDate() {
+		return auctionEndingDate;
 	}
 	/**
 	 * Getter pour startingPrice.
@@ -196,8 +200,8 @@ public class ArticleSold {
 	 * Setter pour autionEndingDate.
 	 * @param autionEndingDate the autionEndingDate to set
 	 */
-	public void setAutionEndingDate(LocalDateTime autionEndingDate) {
-		this.autionEndingDate = autionEndingDate;
+	public void setAuctionEndingDate(LocalDateTime autionEndingDate) {
+		this.auctionEndingDate = autionEndingDate;
 	}
 	/**
 	 * Setter pour startingPrice.
@@ -260,7 +264,7 @@ public class ArticleSold {
 		builder.append(", auctionStartingDate=");
 		builder.append(auctionStartingDate);
 		builder.append(", autionEndingDate=");
-		builder.append(autionEndingDate);
+		builder.append(auctionEndingDate);
 		builder.append(", startingPrice=");
 		builder.append(startingPrice);
 		builder.append(", sellingPrice=");

@@ -8,6 +8,6 @@ public interface ArticleDAO {
 	
 	public void insert (ArticleSold article)  throws SQLException;
 
-	void Select_article(int articleNum);
+	ArticleSold Select_article(int articleNum);
 
 }

@@ -4,6 +4,7 @@
 package fr.eni.ecole.bo;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * Classe en charge
@@ -12,7 +13,7 @@ import java.time.LocalDate;
  * @date 1 juin 2021 - 10:24:37
  */
 public class Auction {
-	private LocalDate auctionDate;
+	private LocalDateTime auctionDate;
 	private Integer auctionAmount;
 	/**
 	 * Constructeur.
@@ -25,7 +26,7 @@ public class Auction {
 	 * @param auctionDate
 	 * @param auctionAmount
 	 */
-	public Auction(LocalDate auctionDate, Integer auctionAmount) {
+	public Auction(LocalDateTime auctionDate, Integer auctionAmount) {
 		super();
 		this.auctionDate = auctionDate;
 		this.auctionAmount = auctionAmount;
@@ -34,7 +35,7 @@ public class Auction {
 	 * Getter pour auctionDate.
 	 * @return the auctionDate
 	 */
-	public LocalDate getAuctionDate() {
+	public LocalDateTime getAuctionDate() {
 		return auctionDate;
 	}
 	/**
@@ -48,7 +49,7 @@ public class Auction {
 	 * Setter pour auctionDate.
 	 * @param auctionDate the auctionDate to set
 	 */
-	public void setAuctionDate(LocalDate auctionDate) {
+	public void setAuctionDate(LocalDateTime auctionDate) {
 		this.auctionDate = auctionDate;
 	}
 	/**
