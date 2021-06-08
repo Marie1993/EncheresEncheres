@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<form method="post" action="/Encheres/Servlet_creation_article">
+	<form method="post" action="/EncheresEncheres/Servlet_creation_article">
 
 		<h1>Mettre un bien en ligne</h1>
 
@@ -23,30 +23,63 @@
 		</div>
 		<textarea name="description" id="description" rows="10" cols="50"></textarea>
 
-
+		<div>
+			<label for="categories">Votre prix de vente :</label>
+		</div>
 		<div>
 			<select name="categories" id="categories">
-				<option value="all">Toutes</option>
-				<option value="computing">Informatique</option>
-				<option value="furniture">Ameublement</option>
-				<option value="clothes">Vêtements</option>
-				<option value="sport">Sport et Loisirs</option>
+				<option value="0">Toutes</option>
+				<option value="1">Informatique</option>
+				<option value="2">Ameublement</option>
+				<option value="3">Vêtements</option>
+				<option value="4">Sport et Loisirs</option>
 			</select>
 		</div>
 		<!--  uploader image -->
 		
-		<div> <input type="number" /> </div>
+	
 
 
 		<div>
 			<label for="sellerPrice">Votre prix de vente :</label>
 		</div>
-		<input type="text" name="sellerPrice" id="sellerPrice" />
+		<input type="number" name="sellerPrice" id="sellerPrice" />
+		
+		<div>
+			<label for="startAuction">Debut de l'enchère :</label>
+		</div>
+		<input type="datetime-local" name="startAuction" id="startAuction" />
+		
+		<div>
+			<label for="endAuction">Fin de l'enchère :</label>
+		</div>
+		<input type="datetime-local" name="endAuction" id="endAuction" />
+		
+		
+		<fieldset>
+		<legend>Retrait</legend>
+		
+		<div>
+			<label for="street">Rue :</label>
+		</div>
+		<input type="text" name="street" id="street" />
+		<div>
+			<label for="postalCode">Code postal :</label>
+		</div>
+		<input type="text" name="postalCode" id="postalCode" />
+			<div>
+			<label for="city">Ville :</label>
+		</div>
+		<input type="text" name="city" id="city" />
+		
+		</fieldset>
 
 		<div>
-			<input type="submit" value="Valider">
-		</div>
+			<input type="submit" value="Enregistrer">
 		
+		
+		<button onclick="window.location.href = '#';">Annuler</button>
+		</div>
 		
 	</form>
 

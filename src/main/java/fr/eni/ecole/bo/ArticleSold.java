@@ -4,6 +4,7 @@
 package fr.eni.ecole.bo;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * Classe en charge
@@ -15,11 +16,14 @@ public class ArticleSold {
 	private Integer articleNum;
 	private String articleName;
 	private String description;
-	private LocalDate auctionStartingDate;
-	private LocalDate autionEndingDate;
+	private LocalDateTime auctionStartingDate;
+	private LocalDateTime autionEndingDate;
 	private Integer startingPrice;
 	private Integer sellingPrice;
 	private Boolean isSold;
+	private Integer numCategory;
+	private Integer numUser;
+	
 	/**
 	 * Constructeur.
 	 */
@@ -27,7 +31,7 @@ public class ArticleSold {
 		super();
 	}
 	/**
-	 * Constructeur.
+	 * Constructeur. pour la base de données
 	 * @param articleNum
 	 * @param articleName
 	 * @param description
@@ -37,8 +41,28 @@ public class ArticleSold {
 	 * @param sellingPrice
 	 * @param isSold
 	 */
-	public ArticleSold(Integer articleNum, String articleName, String description, LocalDate auctionStartingDate,
-			LocalDate autionEndingDate, Integer startingPrice, Integer sellingPrice, Boolean isSold) {
+	public ArticleSold( String articleName, String description, LocalDateTime auctionStartingDate,
+			LocalDateTime autionEndingDate, Integer startingPrice, Integer sellingPrice, Integer numCategory, Integer numUser) {
+		super();
+		
+		this.articleName = articleName;
+		this.description = description;
+		this.auctionStartingDate = auctionStartingDate;
+		this.autionEndingDate = autionEndingDate;
+		this.startingPrice = startingPrice;
+		this.sellingPrice = sellingPrice;
+		this.numCategory = numCategory;
+		this.numUser = numUser;
+		
+	}
+	
+	
+	
+	
+	
+	
+	public ArticleSold(Integer articleNum, String articleName, String description, LocalDateTime auctionStartingDate,
+			LocalDateTime autionEndingDate, Integer startingPrice, Integer sellingPrice, Boolean isSold) {
 		super();
 		this.articleNum = articleNum;
 		this.articleName = articleName;
@@ -74,14 +98,14 @@ public class ArticleSold {
 	 * Getter pour auctionStartingDate.
 	 * @return the auctionStartingDate
 	 */
-	public LocalDate getAuctionStartingDate() {
+	public LocalDateTime getAuctionStartingDate() {
 		return auctionStartingDate;
 	}
 	/**
 	 * Getter pour autionEndingDate.
 	 * @return the autionEndingDate
 	 */
-	public LocalDate getAutionEndingDate() {
+	public LocalDateTime getAutionEndingDate() {
 		return autionEndingDate;
 	}
 	/**
@@ -104,6 +128,12 @@ public class ArticleSold {
 	 */
 	public Boolean getIsSold() {
 		return isSold;
+	}
+	public Integer getNumCategory() {
+		return numCategory;
+	}
+	public Integer getNumUser() {
+		return numUser;
 	}
 	/**
 	 * Setter pour articleNum.
@@ -130,14 +160,14 @@ public class ArticleSold {
 	 * Setter pour auctionStartingDate.
 	 * @param auctionStartingDate the auctionStartingDate to set
 	 */
-	public void setAuctionStartingDate(LocalDate auctionStartingDate) {
+	public void setAuctionStartingDate(LocalDateTime auctionStartingDate) {
 		this.auctionStartingDate = auctionStartingDate;
 	}
 	/**
 	 * Setter pour autionEndingDate.
 	 * @param autionEndingDate the autionEndingDate to set
 	 */
-	public void setAutionEndingDate(LocalDate autionEndingDate) {
+	public void setAutionEndingDate(LocalDateTime autionEndingDate) {
 		this.autionEndingDate = autionEndingDate;
 	}
 	/**
@@ -160,6 +190,13 @@ public class ArticleSold {
 	 */
 	public void setIsSold(Boolean isSold) {
 		this.isSold = isSold;
+	}
+	public void setNumCategory(Integer numCategory) {
+		this.numCategory = numCategory;
+	}
+	
+	public void setNumUser(Integer numUser) {
+		this.numUser = numUser;
 	}
 	/**
 	* {@inheritDoc}

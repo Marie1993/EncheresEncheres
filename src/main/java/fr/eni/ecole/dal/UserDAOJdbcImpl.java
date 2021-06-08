@@ -53,7 +53,6 @@ public class UserDAOJdbcImpl implements UserDAO {
 		try {
 			cnx = ConnectionProvider.getConnection();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
