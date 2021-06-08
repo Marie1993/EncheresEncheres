@@ -246,6 +246,14 @@ public class Users {
 			String numStreet, String postalCode,String city, String password, Integer credit, Boolean admin) {
 		super();
 
+	 /* @param city
+	 * @param password
+	 * Constructeur pour mettre à jour le profil.
+	 */
+	public Users(Integer numUser, String nickname, String name, String surname, String email, String phone,
+			String numStreet, String postalCode, String city, String password) {
+		super();
+		this.numUser = numUser;
 		this.nickname = nickname;
 		this.name = name;
 		this.surname = surname;

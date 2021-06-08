@@ -24,6 +24,29 @@ public class UsersManager {
 		return UserDAO.logIn(nickname, password);
 	}
 	
+
+	public Users addUsers (String nickname, String name, String surname, String email, String phone, String numStreet, String postalCode, String city, String password, Integer credit, Boolean admin ) throws SQLException {
+
+		Users users = new Users ();
+		this.validateNickName();
+		this.validateEmail();
+		
+		users.setNickname(nickname);
+		users.setName(name);
+		users.setSurname(surname);
+		users.setEmail(email);
+		users.setPhone(phone);
+		users.setNumStreet(numStreet);
+		users.setPostalCode(postalCode);
+		users.setCity(city);
+		users.setPassword(password);
+		users.setCredit(credit);
+		users.setAdmin(admin);
+		this.UserDAO.insert(users);
+				
+		return users;
+			
+	}
 	
 	
 	
@@ -41,6 +64,16 @@ public class UsersManager {
 		
 		this.validateNickName();
 		this.validateEmail();
+
+	private void validateEmail() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	private void validateNickName() {
+		// TODO Auto-generated method stub
 		
 		Users users = new Users();
 		users.setNickname(nickname);
@@ -90,6 +123,13 @@ public class UsersManager {
 	{
 		return UserDAO.Select(password);
 	}
+
+
+	public void Update_User(Users user) throws SQLException {
+		UserDAO.Update_User(user);
+		
+	}
+	
 	
 	
 
