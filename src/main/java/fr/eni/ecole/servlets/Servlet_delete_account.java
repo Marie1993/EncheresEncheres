@@ -36,6 +36,7 @@ public class Servlet_delete_account extends HttpServlet {
 		UsersManager UsersManager = new UsersManager();
 		try {
 			UsersManager.Delete_User(user.getNumUser());
+			// Cela permet de retirer les attributs de session et de déconnecter l'utilisateur.
 			session.invalidate();
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/home.jsp");
 			rd.forward(request, response);

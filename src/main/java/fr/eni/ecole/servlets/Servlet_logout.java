@@ -22,6 +22,7 @@ public class Servlet_logout extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Récupère la session et l'invalide.
 		HttpSession session = request.getSession();
 		session.invalidate();
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/home.jsp");
