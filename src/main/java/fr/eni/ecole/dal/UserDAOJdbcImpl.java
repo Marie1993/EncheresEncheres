@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import fr.eni.ecole.bo.Users;
 
 /**
- * @author noemi ///
+ * @author noemie ///
  *
  */
 public class UserDAOJdbcImpl implements UserDAO {
@@ -28,36 +28,88 @@ public class UserDAOJdbcImpl implements UserDAO {
 
 	// MÃ©thode qui va permettre de chercher si un utilisateur est dans la BDD :
 	// retourne true si c'est le cas, false sinon.
+	// Faire des try catch
 	@Override
 	public boolean logIn(String id, String password) throws SQLException {
-		Connection cnx = seConnecter();
-		PreparedStatement stmt = cnx.prepareStatement(LOG_IN);
-		stmt.setString(1, id);
-		stmt.setString(2, password);
-		stmt.setString(3, id);
-		stmt.setString(4, password);
-		System.out.println(id);
-		System.out.println(password);
-		ResultSet rs = stmt.executeQuery();
-		if (rs.next())
-			return true;
-		else
-			return false;
-
-	}	
-	
-	@Override
-
-	public void insert (Users user) throws SQLException  {
-		
-		Connection cnx = null;
-		try {
-			cnx = ConnectionProvider.getConnection();
+		boolean connexion = false;
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+			PreparedStatement pstmt = cnx.prepareStatement(LOG_IN);
+			pstmt.setString(1, id);
+			pstmt.setString(2, password);
+			pstmt.setString(3, id);
+			pstmt.setString(4, password);
+			System.out.println(id);
+			System.out.println(password);
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next())
+				connexion = true;
+			rs.close();
+			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		PreparedStatement pstmt = cnx.prepareStatement(INSERT_USER, PreparedStatement.RETURN_GENERATED_KEYS);
+		return connexion;
+	}
+
+	@Override
+
+	public void insert(Users user) throws SQLException {
+
+		// Syntaxe qui permet de savoir que la connexion ne doit être active que dans le
+		// try/catch. Il la libère dès qu'on en sort.
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+
+			PreparedStatement pstmt = cnx.prepareStatement(INSERT_USER, PreparedStatement.RETURN_GENERATED_KEYS);
+			pstmt.setString(1, user.getNickname());
+			pstmt.setString(2, user.getName());
+			pstmt.setString(3, user.getSurname());
+			pstmt.setString(4, user.getEmail());
+			pstmt.setString(5, user.getPhone());
+			pstmt.setString(6, user.getNumStreet());
+			pstmt.setString(7, user.getPostalCode());
+			pstmt.setString(8, user.getCity());
+			pstmt.setString(9, user.getPassword());
+			pstmt.setInt(10, 50);
+			pstmt.setBoolean(11, user.getAdmin());
+			pstmt.executeUpdate();
+			ResultSet rs = pstmt.getGeneratedKeys();
+			if (rs.next()) {
+				user.setNumUser(rs.getInt(1));
+			}
+
+			rs.close();
+			pstmt.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	@Override
+	public Users Select(String id) throws SQLException {
+		Users user = null;
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+			PreparedStatement pstmt = cnx.prepareStatement(SELECT);
+			pstmt.setString(1, id);
+			pstmt.setString(2, id);
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next())
+				user = new Users(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+						rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
+						rs.getInt(11), rs.getBoolean(12));
+			rs.close();
+			pstmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return user;
+
+	}
+
+	public void Update_User(Users user) throws SQLException {
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+		PreparedStatement pstmt = cnx.prepareStatement(UPDATE_ACCOUNT);
 		pstmt.setString(1, user.getNickname());
 		pstmt.setString(2, user.getName());
 		pstmt.setString(3, user.getSurname());
@@ -67,60 +119,28 @@ public class UserDAOJdbcImpl implements UserDAO {
 		pstmt.setString(7, user.getPostalCode());
 		pstmt.setString(8, user.getCity());
 		pstmt.setString(9, user.getPassword());
-		pstmt.setInt(10, 50);
-		pstmt.setBoolean(11, user.getAdmin());
+		pstmt.setInt(10, user.getNumUser());
 		pstmt.executeUpdate();
-		ResultSet rs = pstmt.getGeneratedKeys();
-		if(rs.next()) {
-			user.setNumUser(rs.getInt(1));
-		}
-		
-		rs.close();
 		pstmt.close();
-		cnx.close();
-	}
-
-	@Override
-	public Users Select(String id) throws SQLException {
-		Users user = null;
-		Connection cnx = seConnecter();
-		PreparedStatement stmt = cnx.prepareStatement(SELECT);
-		stmt.setString(1, id);
-		stmt.setString(2, id);
-		ResultSet rs = stmt.executeQuery();
-		if (rs.next())
-			user = new Users(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-					rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getInt(11),
-					rs.getBoolean(12));
-		return user;
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 	}
-	
-	public void Update_User (Users user) throws SQLException {
-		Connection cnx = seConnecter();
-		PreparedStatement stmt = cnx.prepareStatement(UPDATE_ACCOUNT);
-		stmt.setString(1, user.getNickname());
-		stmt.setString(2, user.getName());
-		stmt.setString(3, user.getSurname());
-		stmt.setString(4, user.getEmail());
-		stmt.setString(5, user.getPhone());
-		stmt.setString(6, user.getNumStreet());
-		stmt.setString(7, user.getPostalCode());
-		stmt.setString(8, user.getCity());
-		stmt.setString(9, user.getPassword());
-		stmt.setInt(10, user.getNumUser());
-		stmt.executeUpdate();
-		
-}
 
 	@Override
 	public void Delete_User(int numUser) throws SQLException {
-		Connection cnx = seConnecter();
-		PreparedStatement stmt = cnx.prepareStatement(DELETE_USER);
-		stmt.setInt(1, numUser);
-		stmt.executeUpdate();
-		stmt.close();
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+		PreparedStatement pstmt = cnx.prepareStatement(DELETE_USER);
+		pstmt.setInt(1, numUser);
+		pstmt.executeUpdate();
+		pstmt.close();
 		cnx.close();
-		
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 	}
 }
