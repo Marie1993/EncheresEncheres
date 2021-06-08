@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpSession;
 /**
  * Servlet implementation class Servlet
  */
+
 @WebServlet("/Servlet")
 public class Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -28,6 +29,8 @@ public class Servlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/home.jsp");
+		
+	
 		rd.forward(request,  response);
 	}
 
