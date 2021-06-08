@@ -3,7 +3,6 @@
  */
 package fr.eni.ecole.bo;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -21,9 +20,45 @@ public class ArticleSold {
 	private Integer startingPrice;
 	private Integer sellingPrice;
 	private Boolean isSold;
-	private Integer numCategory;
-	private Integer numUser;
+	private Category category;
+	private Users user;
+	private Auction auction;
+	private Withdrawal withdrawal;
 	
+	
+	
+	
+	/**
+	 * @param articleNum
+	 * @param articleName
+	 * @param description
+	 * @param auctionStartingDate
+	 * @param autionEndingDate
+	 * @param startingPrice
+	 * @param sellingPrice
+	 * @param isSold
+	 * @param category
+	 * @param user
+	 * @param auction
+	 * @param withdrawal
+	 */
+	public ArticleSold(Integer articleNum, String articleName, String description, LocalDateTime auctionStartingDate,
+			LocalDateTime autionEndingDate, Integer startingPrice, Integer sellingPrice, Boolean isSold,
+			Category category, Users user, Auction auction, Withdrawal withdrawal) {
+		super();
+		this.articleNum = articleNum;
+		this.articleName = articleName;
+		this.description = description;
+		this.auctionStartingDate = auctionStartingDate;
+		this.autionEndingDate = autionEndingDate;
+		this.startingPrice = startingPrice;
+		this.sellingPrice = sellingPrice;
+		this.isSold = isSold;
+		this.category = category;
+		this.user = user;
+		this.auction = auction;
+		this.withdrawal = withdrawal;
+	}
 	/**
 	 * Constructeur.
 	 */
@@ -42,7 +77,7 @@ public class ArticleSold {
 	 * @param isSold
 	 */
 	public ArticleSold( String articleName, String description, LocalDateTime auctionStartingDate,
-			LocalDateTime autionEndingDate, Integer startingPrice, Integer sellingPrice, Integer numCategory, Integer numUser) {
+			LocalDateTime autionEndingDate, Integer startingPrice, Integer sellingPrice) {
 		super();
 		
 		this.articleName = articleName;
@@ -51,8 +86,7 @@ public class ArticleSold {
 		this.autionEndingDate = autionEndingDate;
 		this.startingPrice = startingPrice;
 		this.sellingPrice = sellingPrice;
-		this.numCategory = numCategory;
-		this.numUser = numUser;
+
 		
 	}
 	
@@ -129,12 +163,7 @@ public class ArticleSold {
 	public Boolean getIsSold() {
 		return isSold;
 	}
-	public Integer getNumCategory() {
-		return numCategory;
-	}
-	public Integer getNumUser() {
-		return numUser;
-	}
+
 	/**
 	 * Setter pour articleNum.
 	 * @param articleNum the articleNum to set
@@ -191,12 +220,30 @@ public class ArticleSold {
 	public void setIsSold(Boolean isSold) {
 		this.isSold = isSold;
 	}
-	public void setNumCategory(Integer numCategory) {
-		this.numCategory = numCategory;
-	}
 	
-	public void setNumUser(Integer numUser) {
-		this.numUser = numUser;
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	public Users getUser() {
+		return user;
+	}
+	public void setUser(Users user) {
+		this.user = user;
+	}
+	public Auction getAuction() {
+		return auction;
+	}
+	public void setAuction(Auction auction) {
+		this.auction = auction;
+	}
+	public Withdrawal getWithdrawal() {
+		return withdrawal;
+	}
+	public void setWithdrawal(Withdrawal withdrawal) {
+		this.withdrawal = withdrawal;
 	}
 	/**
 	* {@inheritDoc}
