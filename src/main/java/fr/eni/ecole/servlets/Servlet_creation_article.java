@@ -93,7 +93,7 @@ public class Servlet_creation_article extends HttpServlet {
 		Integer startingPrice = Integer.parseInt(request.getParameter("sellerPrice"));
 		System.out.println("prix " + startingPrice);
 
-		Integer sellingPrice = 0;
+		Integer sellingPrice = startingPrice;
 		
 		// Permet de set le libellé par rapport à ce qui a été choisi dans la liste déroulante.
 		String wording = null;

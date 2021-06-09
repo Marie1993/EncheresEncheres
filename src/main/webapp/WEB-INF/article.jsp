@@ -47,6 +47,11 @@
 		
 		<div>${sessionScope ['article'].withdrawal.postalCode}
 		${sessionScope ['article'].withdrawal.cityName}</div>
+		
+		<form action="/Servlet_article" method="post">
+		<label for = "enchere">Enchérir</label><input type = "number" min = "${sessionScope ['article'].sellingPrice}">
+		<input type = "submit" value = "Enchérir">
+		</form>
 
 		
 	</div>
