@@ -13,18 +13,35 @@
 
 	<header>
 		<h1>ENI-Enchères</h1>
-		
-	<c:if test="${sessionScope.connexion eq null}">
-		<%@ include file="header_notconnected.jsp"%>
-	</c:if>
 
-	<c:if test="${sessionScope.connexion != null}">
-		<%@ include file="header_connected.jsp"%>
-	</c:if>
-	
+		<c:if test="${sessionScope.connexion eq null}">
+			<%@ include file="header_notconnected.jsp"%>
+		</c:if>
+
+		<c:if test="${sessionScope.connexion != null}">
+			<%@ include file="header_connected.jsp"%>
+		</c:if>
+
 	</header>
 
 	<h2>Liste des enchères</h2>
+	<c:forEach items="${liste_article}" var="ArticleSold">
+
+
+		<div>
+		
+		<a href="<c:url value="/Servlet_article">
+            <c:param name="num" value="${ArticleSold.articleNum}"/>
+        </c:url>
+    ">${ArticleSold.articleName}</a>
+			Prix : ${ArticleSold.sellingPrice} Fin de l'enchère :
+			${ArticleSold.auctionEndingDate} Vendeur :
+			${ArticleSold.user.nickname}
+
+		</div>
+
+	</c:forEach>
+
 
 	<h3>Filtres :</h3>
 	<label for="site-search"></label>
