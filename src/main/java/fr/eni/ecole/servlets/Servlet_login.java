@@ -60,7 +60,7 @@ public class Servlet_login extends HttpServlet {
 				Users user = UsersManager.Select(id);
 				session.setAttribute("User", user);
 				session.setAttribute("connexion",true);
-				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/home.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/Servlet");
 				rd.forward(request,  response);
 			}
 			// Sinon, cela affiche un message d'erreur.

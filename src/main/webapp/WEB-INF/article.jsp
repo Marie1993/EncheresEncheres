@@ -10,52 +10,59 @@
 <title></title>
 </head>
 <body>
-<div class = "page">
-	<header>
+	<div class="page">
+		<header>
 
-		<c:if test="${sessionScope.connexion eq null}">
-			<%@ include file="header_notconnected.jsp"%>
-		</c:if>
+			<c:if test="${sessionScope.connexion eq null}">
+				<%@ include file="header_notconnected.jsp"%>
+			</c:if>
 
 
-		<c:if test="${sessionScope.connexion != null}">
-			<%@ include file="header_connected.jsp"%>
-		</c:if>
-	</header>
+			<c:if test="${sessionScope.connexion != null}">
+				<%@ include file="header_connected.jsp"%>
+			</c:if>
+		</header>
 
-	<div class="profil">
-		
-		
-		
-		<div>Nom de l'article : ${sessionScope ['article'].articleName}</div>
+		<div class="profil">
 
-		<div>Description : ${sessionScope ['article'].description}</div>
-		
-		<div>Catégorie : ${sessionScope ['article'].category.wording}</div>
 
-		<div>Début de l'enchère : ${sessionScope ['article'].auctionStartingDate}</div>
 
-		<div>Fin de l'enchère : ${sessionScope ['article'].auctionEndingDate}</div>
+			<div>Nom de l'article : ${sessionScope ['article'].articleName}</div>
 
-		<div>Prix de base : ${sessionScope ['article'].startingPrice}</div>
-		
-		<div>Prix actuel : ${sessionScope ['article'].sellingPrice}</div>
+			<div>Description : ${sessionScope ['article'].description}</div>
 
-		<div>Vendeur : ${sessionScope ['article'].user.nickname}</div>
-		
-		<div>Point de retrait : ${sessionScope ['article'].withdrawal.streetNum}</div>
-		
-		<div>${sessionScope ['article'].withdrawal.postalCode}
-		${sessionScope ['article'].withdrawal.cityName}</div>
-		
-		<form action="/Servlet_article" method="post">
-		<label for = "enchere">Enchérir</label><input type = "number" min = "${sessionScope ['article'].sellingPrice}">
-		<input type = "submit" value = "Enchérir">
-		</form>
+			<div>Catégorie : ${sessionScope ['article'].category.wording}</div>
 
-		
+			<div>Début de l'enchère : ${sessionScope ['article'].auctionStartingDate}</div>
+
+			<div>Fin de l'enchère : ${sessionScope ['article'].auctionEndingDate}</div>
+
+			<div>Prix de base : ${sessionScope ['article'].startingPrice}</div>
+
+			<div>Prix actuel : ${sessionScope ['article'].sellingPrice}</div>
+
+			<div>Vendeur : ${sessionScope ['article'].user.nickname}</div>
+
+			<div>Point de retrait : ${sessionScope ['article'].withdrawal.streetNum}</div>
+
+			<div>${sessionScope ['article'].withdrawal.postalCode}
+				${sessionScope ['article'].withdrawal.cityName}</div>
+
+			<c:if test="${sessionScope.connexion != null}">
+				<c:if
+					test="${sessionScope ['User'].nickname != sessionScope ['article'].user.nickname}">
+					<form action="/EncheresEncheres/Servlet_article" method="post">
+						<label for="enchere">Enchérir</label><input type="number"
+							min="${sessionScope ['article'].sellingPrice}"
+							name="sellingPrice"> <input type="submit"
+							value="Enchérir">
+					</form>
+				</c:if>
+			</c:if>
+
+
+		</div>
 	</div>
-</div>
 
 
 
