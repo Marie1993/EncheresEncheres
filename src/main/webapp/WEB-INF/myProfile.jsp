@@ -42,6 +42,8 @@
 		<div>Code postal : ${sessionScope ['User'].postalCode}</div>
 
 		<div>Ville : ${sessionScope ['User'].city}</div>
+		
+		<div>Crédit : ${sessionScope ['User'].credit}</div>
 	</div>
 </div>
 

@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import fr.eni.ecole.bo.ArticleSold;
 import fr.eni.ecole.bo.Users;
 
 /**
@@ -20,6 +21,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 	private static final String INSERT_USER = " insert into utilisateurs (pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,credit,administrateur) values (?,?,?,?,?,?,?,?,?,?,?)";
 	private final String UPDATE_ACCOUNT = "UPDATE Utilisateurs SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ? WHERE no_utilisateur = ? ;";
 	private final String DELETE_USER = "DELETE FROM Utilisateurs WHERE no_utilisateur = ?;";
+	private final String UPDATE_CREDIT = "UPDATE Utilisateurs SET credit = ? where no_utilisateur = ?;";
 
 	Connection seConnecter() throws SQLException {
 		Connection cnx = ConnectionProvider.getConnection();
@@ -109,21 +111,20 @@ public class UserDAOJdbcImpl implements UserDAO {
 
 	public void Update_User(Users user) throws SQLException {
 		try (Connection cnx = ConnectionProvider.getConnection()) {
-		PreparedStatement pstmt = cnx.prepareStatement(UPDATE_ACCOUNT);
-		pstmt.setString(1, user.getNickname());
-		pstmt.setString(2, user.getName());
-		pstmt.setString(3, user.getSurname());
-		pstmt.setString(4, user.getEmail());
-		pstmt.setString(5, user.getPhone());
-		pstmt.setString(6, user.getNumStreet());
-		pstmt.setString(7, user.getPostalCode());
-		pstmt.setString(8, user.getCity());
-		pstmt.setString(9, user.getPassword());
-		pstmt.setInt(10, user.getNumUser());
-		pstmt.executeUpdate();
-		pstmt.close();
-		}
-		catch (SQLException e) {
+			PreparedStatement pstmt = cnx.prepareStatement(UPDATE_ACCOUNT);
+			pstmt.setString(1, user.getNickname());
+			pstmt.setString(2, user.getName());
+			pstmt.setString(3, user.getSurname());
+			pstmt.setString(4, user.getEmail());
+			pstmt.setString(5, user.getPhone());
+			pstmt.setString(6, user.getNumStreet());
+			pstmt.setString(7, user.getPostalCode());
+			pstmt.setString(8, user.getCity());
+			pstmt.setString(9, user.getPassword());
+			pstmt.setInt(10, user.getNumUser());
+			pstmt.executeUpdate();
+			pstmt.close();
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
@@ -139,6 +140,19 @@ public class UserDAOJdbcImpl implements UserDAO {
 		cnx.close();
 		}
 		catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void Update_credit(ArticleSold article) throws SQLException {
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+			PreparedStatement pstmt = cnx.prepareStatement(UPDATE_CREDIT);
+			pstmt.setInt(1, article.getUser().getCredit() - article.getSellingPrice());
+			pstmt.setInt(2, article.getUser().getNumUser());
+			pstmt.executeUpdate();
+			pstmt.close();
+			cnx.close();
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 

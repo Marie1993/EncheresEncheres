@@ -39,13 +39,12 @@ public class ArticleSold {
 	 * @param isSold
 	 * @param category
 	 * @param user
-	 * @param auction
 	 * @param withdrawal
 	 * Constructeur pour afficher le détail
 	 */
 	public ArticleSold(Integer articleNum, String articleName, String description, LocalDateTime auctionStartingDate,
 			LocalDateTime autionEndingDate, Integer startingPrice, Integer sellingPrice,
-			Category category, Users user, Auction auction, Withdrawal withdrawal) {
+			Category category, Users user, Withdrawal withdrawal) {
 		super();
 		this.articleNum = articleNum;
 		this.articleName = articleName;
@@ -56,7 +55,6 @@ public class ArticleSold {
 		this.sellingPrice = sellingPrice;
 		this.category = category;
 		this.user = user;
-		this.auction = auction;
 		this.withdrawal = withdrawal;
 	}
 	/**
@@ -99,6 +97,37 @@ public class ArticleSold {
 	
 	
 	
+	
+	/**
+	 * @param articleNum
+	 * @param articleName
+	 * @param description
+	 * @param auctionStartingDate
+	 * @param auctionEndingDate
+	 * @param startingPrice
+	 * @param sellingPrice
+	 * @param isSold
+	 * @param category
+	 * @param user
+	 * @param auction
+	 * @param withdrawal
+	 */
+	public ArticleSold(Integer articleNum, String articleName, String description, LocalDateTime auctionStartingDate,
+			LocalDateTime auctionEndingDate, Integer startingPrice, Integer sellingPrice,
+			Category category, Users user, Auction auction, Withdrawal withdrawal) {
+		super();
+		this.articleNum = articleNum;
+		this.articleName = articleName;
+		this.description = description;
+		this.auctionStartingDate = auctionStartingDate;
+		this.auctionEndingDate = auctionEndingDate;
+		this.startingPrice = startingPrice;
+		this.sellingPrice = sellingPrice;
+		this.category = category;
+		this.user = user;
+		this.auction = auction;
+		this.withdrawal = withdrawal;
+	}
 	public ArticleSold(Integer articleNum, String articleName, String description, LocalDateTime auctionStartingDate,
 			LocalDateTime autionEndingDate, Integer startingPrice, Integer sellingPrice, Boolean isSold) {
 		super();
@@ -111,6 +140,7 @@ public class ArticleSold {
 		this.sellingPrice = sellingPrice;
 		this.isSold = isSold;
 	}
+	
 	/**
 	 * Getter pour articleNum.
 	 * @return the articleNum
