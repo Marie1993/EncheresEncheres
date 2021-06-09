@@ -1,7 +1,11 @@
 package fr.eni.ecole.servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
+import fr.eni.ecole.bo.ArticleSold;
+import fr.eni.ecole.dal.ArticleDAOJdbcImpl;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -28,6 +32,14 @@ public class Servlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		ArticleDAOJdbcImpl articleDAO = new ArticleDAOJdbcImpl ();
+		try {
+			ArrayList <ArticleSold> liste_article = articleDAO.Select_all();
+			session.setAttribute("liste_article", liste_article);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/home.jsp");
 		
 	
