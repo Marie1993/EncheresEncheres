@@ -29,5 +29,28 @@ public class ArticleManager {
 		
 		return article;
 	}
+	
+	public ArticleSold Select_article(int articleNum) {
+		return this.articleDAO.Select_article(articleNum);
+	}
+
+	public Boolean Verify_auction(ArticleSold article) throws SQLException {
+		return this.articleDAO.Verify_auction(article);
+	}
+
+	public void Insert_auction(ArticleSold article) {
+		this.articleDAO.Insert_auction(article);
+		
+	}
+
+	public void Update_auction(ArticleSold article) {
+		this.articleDAO.Update_auction(article);
+		
+	}
+
+	public void Update_article(int sellingPrice, Integer articleNum) {
+		this.articleDAO.Update_article(sellingPrice, articleNum);
+		
+	}
 
 }
