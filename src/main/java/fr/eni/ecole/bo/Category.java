@@ -56,6 +56,7 @@ public class Category {
 	public void setWording(String wording) {
 		this.wording = wording;
 	}
+	
 	/**
 	* {@inheritDoc}
 	*/

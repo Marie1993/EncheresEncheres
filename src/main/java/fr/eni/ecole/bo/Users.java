@@ -22,6 +22,10 @@ public class Users {
 	private String password;
 	private Integer credit;
 	private Boolean admin;
+	
+	
+	
+	
 	/**
 	 * Getter pour numUser.
 	 * @return the numUser
@@ -229,7 +233,6 @@ public class Users {
 	}
 	
 	/**
-	 * Constructeur.
 	 * @param numUser
 	 * @param nickname
 	 * @param name
@@ -238,17 +241,9 @@ public class Users {
 	 * @param phone
 	 * @param numStreet
 	 * @param postalCode
+	 * @param city
 	 * @param password
-	 * @param credit
-	 * @param admin
-	 */
-	public Users(String nickname, String name, String surname, String email, String phone,
-			String numStreet, String postalCode,String city, String password, Integer credit, Boolean admin) {
-		super();
-
-	 /* @param city
-	 * @param password
-	 * Constructeur pour mettre Ã  jour le profil.
+	 * Constructeur pour mettre à jour le profil.
 	 */
 	public Users(Integer numUser, String nickname, String name, String surname, String email, String phone,
 			String numStreet, String postalCode, String city, String password) {
@@ -263,8 +258,23 @@ public class Users {
 		this.postalCode = postalCode;
 		this.city = city;
 		this.password = password;
-		this.credit = credit;
-		this.admin = admin;
+	}
+	/**
+	 * @param numUser
+	 * @param nickname
+	 * Pour utiliser dans la classe ArticleSold
+	 */
+	public Users(Integer numUser, String nickname) {
+		super();
+		this.numUser = numUser;
+		this.nickname = nickname;
+	}
+	/**
+	 * @param numUser
+	 */
+	public Users(Integer numUser) {
+		super();
+		this.numUser = numUser;
 	}
 	/**
 	* {@inheritDoc}

@@ -15,12 +15,7 @@
 		<h1>ENI-Enchères</h1>
 		
 	<c:if test="${sessionScope.connexion eq null}">
-
-		<a href="/EncheresEncheres/Servlet_account_creation">S'inscrire -</a>
-		<a href="/EncheresEncheres/Servlet_login">Se connecter</a>
-
 		<%@ include file="header_notconnected.jsp"%>
-
 	</c:if>
 
 	<c:if test="${sessionScope.connexion != null}">
