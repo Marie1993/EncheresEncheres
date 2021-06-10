@@ -31,13 +31,17 @@ public class Servlet_article extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println(request.getParameter("num"));
 		HttpSession session = request.getSession();
-		int numArticle = Integer.parseInt(request.getParameter("num"));
-		ArticleSold article = articleManager.Select_article(numArticle);
-		session.setAttribute("article", article);
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/article.jsp");
-		rd.forward(request, response);
+		if (session.getAttribute("connexion") != null) {
+			int numArticle = Integer.parseInt(request.getParameter("num"));
+			ArticleSold article = articleManager.Select_article(numArticle);
+			session.setAttribute("article", article);
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/article.jsp");
+			rd.forward(request, response);
+		} else {
+			request.setAttribute("refusconnexion", "Veuillez vous connecter pour continuer");
+			request.getRequestDispatcher("/WEB-INF/connection.jsp").forward(request, response);
+		}
 
 	}
 
@@ -56,6 +60,15 @@ public class Servlet_article extends HttpServlet {
 		int sellingPrice = Integer.parseInt(request.getParameter("sellingPrice"));
 		// On change le sellingPrice ainsi que l'utilisateur qui est associé à l'article
 		// (du vendeur à l'enchéreur)
+		// Avant cela, il faut faire les modifs pour récupérer l'ancien acheteur et
+		// l'ancien prix. Avec ça, on peut restituer l'argent
+
+		try {
+			userDAO.Update_credit_refund(article);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		// On update maintenant le nouveau prix et nouvel acheteur.
 		article.setSellingPrice(sellingPrice);
 		article.setUser(user);
 		// On créé un booléen qui nous permet de voir si l'utilisateur a déjà fait une
@@ -63,9 +76,7 @@ public class Servlet_article extends HttpServlet {
 		Boolean auction;
 		try {
 			auction = articleManager.Verify_auction(article);
-			System.out.println(auction);
 			if (auction == false) {
-				System.out.println("test");
 				articleManager.Insert_auction(article);
 			} else
 				// Sinon ça update la ligne avec la nouvelle enchère
@@ -74,22 +85,24 @@ public class Servlet_article extends HttpServlet {
 			articleManager.Update_article(sellingPrice, article.getArticleNum());
 			// On retire à l'utilisateur le crédit utilisé.
 			try {
-				userDAO.Update_credit(article);
+				userDAO.Update_credit_subtract(article);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 			article = articleManager.Select_article(article.getArticleNum());
+			user = userDAO.Select(article.getEnchereur().getNickname());
 			session.setAttribute("article", article);
+			session.setAttribute("User", user);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 		// S'il n'a jamais fait d'enchère, cela en créé une.
 		// On renvoie sur la page.
-		
+
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/article.jsp");
 		rd.forward(request, response);
-		
+
 	}
 
 }

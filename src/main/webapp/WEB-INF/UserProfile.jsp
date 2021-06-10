@@ -7,13 +7,11 @@
 <head>
 <meta charset="UTF-8">
 
-<link rel="stylesheet" type="text/css" href="CSS\Template.css">
-
-<style type="text/css"> 
-a:link 
-{ 
- text-decoration:none; 
-} 
+<link rel="stylesheet" type="text/css" href="CSS\CSS.css">
+<style type="text/css">
+a:link {
+	text-decoration: none;
+}
 </style>
 
 <title></title>
