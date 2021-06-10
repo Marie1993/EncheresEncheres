@@ -1,5 +1,8 @@
+
+<%@page import="fr.eni.ecole.messages.LecteurMessages"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +10,26 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<!-- <div class="error_message">${requestScope.crationProfile}</div> -->
+
+
+	<%
+			List<Integer> listeCodesErreurs = (List<Integer>)request.getAttribute("listeCodesErreurs");
+			if(listeCodesErreurs!=null)
+			{
+	
+				for(int codeErreur:listeCodesErreurs)
+				{
+		
+					%>
+					
+					<p style ="color:red"><%=LecteurMessages.getMessageErreur(codeErreur)%></p>
+		<%	
+					
+				}
+			}
+		%>
 
 <form method="post" action="/EncheresEncheres/Servlet_account_creation">
 
@@ -41,7 +64,9 @@
        <div><label for="city">Votre ville :</label></div>
        <input type="text" name="city" id="city" /> 
        
-       <div><input type="submit" value = "Valider"></div>  
+       <div><input type="submit" value = "Valider">
+        <input type="button" onclick="window.location.href = 'http://localhost:8080/EncheresEncheres/';" value="Annuler"/>
+       </div>  
    </p>
 </form>
 
