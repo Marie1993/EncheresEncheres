@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import fr.eni.ecole.bo.ArticleSold;
+import fr.eni.ecole.bo.Users;
 
 public interface ArticleDAO {
 	
@@ -22,6 +23,10 @@ public interface ArticleDAO {
 	public void Update_auction(ArticleSold article);
 	
 	public boolean Verify_auction (ArticleSold article) throws SQLException;
+
+	ArrayList<ArticleSold> Select_by_user(Users user) throws SQLException;
+	
+	ArrayList<ArticleSold> Select_user_auctions(Users user) throws SQLException;
 	
 	
 

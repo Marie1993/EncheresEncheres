@@ -9,35 +9,34 @@
 <meta charset="UTF-8">
 
 <link rel="stylesheet" type="text/css" href="CSS\CSS.css">
-<style type="text/css"> 
-a:link 
-{ 
- text-decoration:none; 
-} 
+<style type="text/css">
+a:link {
+	text-decoration: none;
+}
 </style>
 
 <title>Accueil</title>
-	<header >
-	
-	
-		<h1>ENI-Enchères</h1>
+<header>
 
-		<c:if test="${sessionScope.connexion eq null}">
-			<%@ include file="header_notconnected.jsp"%>
-		</c:if>
 
-		<c:if test="${sessionScope.connexion != null}">
-			<%@ include file="header_connected.jsp"%>
-		</c:if>
+	<h1>ENI-Enchères</h1>
 
-	</header>
+	<c:if test="${sessionScope.connexion eq null}">
+		<%@ include file="header_notconnected.jsp"%>
+	</c:if>
+
+	<c:if test="${sessionScope.connexion != null}">
+		<%@ include file="header_connected.jsp"%>
+	</c:if>
+
+</header>
 
 
 
 </head>
 <body>
 
-<img src = "images\ban2.jpeg" id = "ban"/>
+	<img src="images\ban2.jpeg" id="ban" />
 
 
 
@@ -50,18 +49,39 @@ a:link
 	<button>Rechercher</button>
 
 	<h4>Catégorie :</h4>
+	
+	
+	<div id="menu">
 
-	<nav>
-		<ul>
-			<li class="deroulant"><a href="#">Toutes</a>
-				<ul class="sous">
-					<li><a href="/FilterInformatic">Informatique</a></li>
-					<li><a href="#">Ameublement</a></li>
-					<li><a href="#">Vêtements</a></li>
-					<li><a href="#">Sport et Loisir</a></li>
-				</ul>
-	</nav>
-
+    <div class="example">
+      <a href=#><img src="images\inf.jpeg" alt="tile3" width="200" height="320px" alt="house" /></a>
+      <div class="fadedbox">
+        <div class="title text"> Informatique </div>
+      </div>
+    </div>
+    
+    <div class="example">
+      <a href=#><img src="images\sport.jpeg" alt="tile3" width="200" height="320px" alt="house" /></a>
+      <div class="fadedbox">
+        <div class="title text"> Sport </div>
+      </div>
+    </div>
+	
+    <div class="example">
+      <a href=#><img src="images\meuble.jpeg" alt="tile3" width="200" height="320px" alt="house" /></a>
+      <div class="fadedbox">
+        <div class="title text"> Ameublement </div>
+      </div>
+    </div>
+    
+    <div class="example">
+      <a href=#><img src="images\mode.jpeg" alt="tile3" width="200" height="320px" alt="house" /></a>
+      <div class="fadedbox">
+        <div class="title text"> Mode </div>
+      </div>
+    </div>
+	</div>
+		
 
 
 	<h2>Liste des enchères</h2>
@@ -76,9 +96,12 @@ a:link
         </c:url>
     ">${ArticleSold.articleName}</a>
 			Prix : ${ArticleSold.sellingPrice} Fin de l'enchère :
-			${ArticleSold.auctionEndingDate} Vendeur :
-			${ArticleSold.user.nickname}
-			
+			${ArticleSold.auctionEndingDate} Vendeur : <a
+				href="<c:url value="/Servlet_show_user">
+            <c:param name="nickname" value="${ArticleSold.user.nickname}"/>
+        </c:url>
+    ">${ArticleSold.user.nickname}</a>
+
 
 		</div>
 

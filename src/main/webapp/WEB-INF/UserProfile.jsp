@@ -34,27 +34,24 @@ a:link {
 		
 		
 		
-		<div>Pseudo : ${User.nickname}</div>
+		<div>Pseudo : ${User_profile.nickname}</div>
 
-		<div>Nom : ${User.name}</div>
+		<div>Nom : ${User_profile.name}</div>
 
-		<div>Prénom : ${User.surname}</div>
+		<div>Prénom : ${User_profile.surname}</div>
 
-		<div>Email : ${User.email}</div>
+		<div>Email : ${User_profile.email}</div>
 
-		<div>Téléphone : ${User.phone}</div>
+		<div>Téléphone : ${User_profile.phone}</div>
 
-		<div>Rue : ${User.numStreet}</div>
+		<div>Rue : ${User_profile.numStreet}</div>
 
-		<div>Code postal : ${User.postalCode}</div>
+		<div>Code postal : ${User_profile.postalCode}</div>
 
-		<div>Ville : ${User.city}</div>
+		<div>Ville : ${User_profile.city}</div>
 		
-		<div>Crédit : ${User.credit}</div>
 	</div>
 </div>
-
-<a href="/EncheresEncheres//Servlet_modif_profile">Modifier mon profil</a>
 
 </body>
 </html>
