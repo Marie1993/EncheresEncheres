@@ -58,28 +58,32 @@ public class Servlet_article extends HttpServlet {
 		// (du vendeur à l'enchéreur)
 		article.setSellingPrice(sellingPrice);
 		article.setUser(user);
-		// On créé un booléen qui nous permet de voir si l'utilisateur a déjà fait une enchère sur l'objet.
+		// On créé un booléen qui nous permet de voir si l'utilisateur a déjà fait une
+		// enchère sur l'objet.
 		Boolean auction;
 		try {
 			auction = articleManager.Verify_auction(article);
+			System.out.println(auction);
+			if (auction == false) {
+				System.out.println("test");
+				articleManager.Insert_auction(article);
+			} else
+				// Sinon ça update la ligne avec la nouvelle enchère
+				articleManager.Update_auction(article);
+			// On met à jour l'article avec le nouveau prix.
+			articleManager.Update_article(sellingPrice, article.getArticleNum());
+			// On retire à l'utilisateur le crédit utilisé.
+			try {
+				userDAO.Update_credit(article);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+
 		// S'il n'a jamais fait d'enchère, cela en créé une.
-		if (auction = false)
-			articleManager.Insert_auction(article);
-		else
-			// Sinon ça update la ligne avec la nouvelle enchère
-			articleManager.Update_auction(article);
-		// On met à jour l'article avec le nouveau prix.
-		articleManager.Update_article(sellingPrice, article.getArticleNum());
-		// On retire à l'utilisateur le crédit utilisé.
-		try {
-			userDAO.Update_credit(article);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
+
 		RequestDispatcher rd = request.getRequestDispatcher("/Servlet");
 		rd.forward(request, response);
 	}

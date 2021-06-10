@@ -27,23 +27,23 @@
 		
 		
 		
-		<div>Pseudo : ${sessionScope ['User'].nickname}</div>
+		<div>Pseudo : ${User.nickname}</div>
 
-		<div>Nom : ${sessionScope ['User'].name}</div>
+		<div>Nom : ${User.name}</div>
 
-		<div>Prénom : ${sessionScope ['User'].surname}</div>
+		<div>Prénom : ${User.surname}</div>
 
-		<div>Email : ${sessionScope ['User'].email}</div>
+		<div>Email : $User.email</div>
 
-		<div>Téléphone : ${sessionScope ['User'].phone}</div>
+		<div>Téléphone : $User.phone</div>
 
-		<div>Rue : ${sessionScope ['User'].numStreet}</div>
+		<div>Rue : $User.numStreet</div>
 
-		<div>Code postal : ${sessionScope ['User'].postalCode}</div>
+		<div>Code postal : $User.postalCode</div>
 
-		<div>Ville : ${sessionScope ['User'].city}</div>
+		<div>Ville : $User.city</div>
 		
-		<div>Crédit : ${sessionScope ['User'].credit}</div>
+		<div>Crédit : $User.credit</div>
 	</div>
 </div>
 
