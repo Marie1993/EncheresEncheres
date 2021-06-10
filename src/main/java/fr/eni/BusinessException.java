@@ -19,7 +19,7 @@ public class BusinessException extends Exception {
 	
 	
 	//ajout de l'erreur
-	public void ajouterErreur(int code)
+	public void addErreur(int code)
 	{
 		if(!this.ListeCodesErreur.contains(code))
 		{
