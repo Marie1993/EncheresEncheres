@@ -24,23 +24,7 @@
 
 	</header>
 
-	<h2>Liste des enchères</h2>
-	<c:forEach items="${liste_article}" var="ArticleSold">
 
-
-		<div>
-		
-		<a href="<c:url value="/Servlet_article">
-            <c:param name="num" value="${ArticleSold.articleNum}"/>
-        </c:url>
-    ">${ArticleSold.articleName}</a>
-			Prix : ${ArticleSold.sellingPrice} Fin de l'enchère :
-			${ArticleSold.auctionEndingDate} Vendeur :
-			${ArticleSold.user.nickname}
-
-		</div>
-
-	</c:forEach>
 
 
 	<h3>Filtres :</h3>
@@ -57,7 +41,7 @@
 		<ul>
 			<li class="deroulant"><a href="#">Toutes</a>
 				<ul class="sous">
-					<li><a href="#">Informatique</a></li>
+					<li><a href="/FilterInformatic">Informatique</a></li>
 					<li><a href="#">Ameublement</a></li>
 					<li><a href="#">Vêtements</a></li>
 					<li><a href="#">Sport et Loisir</a></li>
@@ -66,17 +50,25 @@
 
 
 
-	<nav>
-		<ul>
-			<li class="deroulant"><a href="#">Toutes</a>
-				<ul class="sous">
-					<li><a href="#">Informatique</a></li>
-					<li><a href="#">Ameublement</a></li>
-					<li><a href="#">Vêtements</a></li>
-					<li><a href="#">Sport et Loisirs</a></li>
-				</ul>
-	</nav>
+	<h2>Liste des enchères</h2>
+	<c:forEach items="${liste_article}" var="ArticleSold">
 
+
+		<div>
+
+			<a
+				href="<c:url value="/Servlet_article">
+            <c:param name="num" value="${ArticleSold.articleNum}"/>
+        </c:url>
+    ">${ArticleSold.articleName}</a>
+			Prix : ${ArticleSold.sellingPrice} Fin de l'enchère :
+			${ArticleSold.auctionEndingDate} Vendeur :
+			${ArticleSold.user.nickname}
+			
+
+		</div>
+
+	</c:forEach>
 
 
 

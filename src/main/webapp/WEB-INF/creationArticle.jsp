@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Mise en vente article</title>
 </head>
 <body>
 
@@ -24,7 +24,7 @@
 		<textarea name="description" id="description" rows="10" cols="50"></textarea>
 
 		<div>
-			<label for="categories">Votre prix de vente :</label>
+			<label for="categories">Votre catégorie de vente :</label>
 		</div>
 		<div>
 			<select name="categories" id="categories">
@@ -60,7 +60,7 @@
 		<legend>Retrait</legend>
 		
 		<div>
-			<label for="numStreet">Rue :</label> <input type="text"
+			<label for="numStreet">Adresse  :</label> <input type="text"
 				name="numStreet" id="numStreet"
 				value="${sessionScope ['User'].numStreet}"
 				placeholder="${sessionScope ['User'].numStreet}" />
