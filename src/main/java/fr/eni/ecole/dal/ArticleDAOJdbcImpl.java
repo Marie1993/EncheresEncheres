@@ -18,12 +18,10 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	private final String INSERT = "insert into ARTICLES_VENDUS(nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie)values(?,?,?,?,?,?,?,?)";
 
 	// On récupère ce dont on a besoin + les id.
-	private final String SELECT_ARTICLE_WITHNUM = "SELECT DISTINCT Articles_vendus.no_article, Articles_vendus.nom_article, Articles_vendus.description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, CATEGORIES.no_categorie, CATEGORIES.libelle, UTILISATEURS.no_utilisateur,UTILISATEURS.pseudo, Retraits.no_article, Retraits.rue, Retraits.code_postal, Retraits.ville, (SELECT \r\n"
-			+ "    UTILISATEURS.pseudo\r\n" + "FROM \r\n"
-			+ "    ENCHERES INNER JOIN UTILISATEURS on Encheres.no_utilisateur = UTILISATEURS.no_utilisateur\r\n"
-			+ "WHERE \r\n" + "    ENCHERES.montant_enchere = (\r\n" + "        SELECT \r\n"
-			+ "            MAX(Encheres.montant_enchere)\r\n" + "        FROM\r\n"
-			+ "            ENCHERES INNER JOIN UTILISATEURS on Encheres.no_utilisateur = UTILISATEURS.no_utilisateur)) as pseudo_enchereur FROM ARTICLES_VENDUS INNER JOIN ENCHERES on Articles_vendus.no_article = Encheres.no_article INNER JOIN CATEGORIES on Articles_vendus.no_categorie = CATEGORIES.no_categorie INNER JOIN UTILISATEURS on ARTICLES_VENDUS.no_utilisateur = UTILISATEURS.no_utilisateur INNER JOIN RETRAITS on ARTICLES_VENDUS.no_article = RETRAITS.no_article WHERE Articles_vendus.no_article = ?;";
+	private final String SELECT_ARTICLE_WITHNUM = "SELECT DISTINCT Articles_vendus.no_article, Articles_vendus.nom_article, Articles_vendus.description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, CATEGORIES.no_categorie, CATEGORIES.libelle, UTILISATEURS.no_utilisateur,UTILISATEURS.pseudo, Retraits.no_article, Retraits.rue, Retraits.code_postal, Retraits.ville, (SELECT UTILISATEURS.pseudo\r\n"
+			+ "FROM ENCHERES INNER JOIN UTILISATEURS on Encheres.no_utilisateur = UTILISATEURS.no_utilisateur where Encheres.no_article = ?\r\n"
+			+ "and ENCHERES.montant_enchere = (SELECT MAX (Encheres.montant_enchere) FROM ENCHERES INNER JOIN UTILISATEURS on Encheres.no_utilisateur = UTILISATEURS.no_utilisateur where Encheres.no_article = ?))\r\n"
+			+ " as pseudo_enchereur FROM ARTICLES_VENDUS INNER JOIN ENCHERES on Articles_vendus.no_article = Encheres.no_article INNER JOIN CATEGORIES on Articles_vendus.no_categorie = CATEGORIES.no_categorie INNER JOIN UTILISATEURS on ARTICLES_VENDUS.no_utilisateur = UTILISATEURS.no_utilisateur INNER JOIN RETRAITS on ARTICLES_VENDUS.no_article = RETRAITS.no_article WHERE Articles_vendus.no_article = ?";
 	private final String SELECT_ARTICLE_USER = "SELECT Articles_vendus.no_article, Articles_vendus.nom_article, Articles_vendus.description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, CATEGORIES.no_categorie, CATEGORIES.libelle, UTILISATEURS.no_utilisateur,UTILISATEURS.pseudo, Retraits.no_article, Retraits.rue, Retraits.code_postal, Retraits.ville, Encheres.no_utilisateur, Encheres.no_article, Encheres.date_enchere, Encheres.montant_enchere FROM ARTICLES_VENDUS INNER JOIN ENCHERES on Articles_vendus.no_article = Encheres.no_article INNER JOIN CATEGORIES on Articles_vendus.no_categorie = CATEGORIES.no_categorie INNER JOIN UTILISATEURS on ARTICLES_VENDUS.no_utilisateur = UTILISATEURS.no_utilisateur INNER JOIN RETRAITS on ARTICLES_VENDUS.no_article = RETRAITS.no_article WHERE Utilisateurs.no_utilisateur = ?;";
 	private final String INSERT_WITHDRAWAL = "INSERT INTO Retraits values (?,?,?,?);";
 	private final String INSERT_AUCTION = "INSERT INTO Encheres values (?,?,?,?);";
@@ -40,6 +38,8 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		try (Connection cnx = ConnectionProvider.getConnection()) {
 			PreparedStatement pstmt = cnx.prepareStatement(SELECT_ARTICLE_WITHNUM);
 			pstmt.setInt(1, articleNum);
+			pstmt.setInt(2, articleNum);
+			pstmt.setInt(3, articleNum);
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
 				Users user = new Users(rs.getInt(10), rs.getString(11));
