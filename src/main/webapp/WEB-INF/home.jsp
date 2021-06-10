@@ -50,18 +50,39 @@ a:link
 	<button>Rechercher</button>
 
 	<h4>Catégorie :</h4>
+	
+	
+	<div id="menu">
 
-	<nav>
-		<ul>
-			<li class="deroulant"><a href="#">Toutes</a>
-				<ul class="sous">
-					<li><a href="/FilterInformatic">Informatique</a></li>
-					<li><a href="#">Ameublement</a></li>
-					<li><a href="#">Vêtements</a></li>
-					<li><a href="#">Sport et Loisir</a></li>
-				</ul>
-	</nav>
-
+    <div class="example">
+      <a href=#><img src="images\inf.jpeg" alt="tile3" width="200" height="320px" alt="house" /></a>
+      <div class="fadedbox">
+        <div class="title text"> Informatique </div>
+      </div>
+    </div>
+    
+    <div class="example">
+      <a href=#><img src="images\sport.jpeg" alt="tile3" width="200" height="320px" alt="house" /></a>
+      <div class="fadedbox">
+        <div class="title text"> Sport </div>
+      </div>
+    </div>
+	
+    <div class="example">
+      <a href=#><img src="images\meuble.jpeg" alt="tile3" width="200" height="320px" alt="house" /></a>
+      <div class="fadedbox">
+        <div class="title text"> Ameublement </div>
+      </div>
+    </div>
+    
+    <div class="example">
+      <a href=#><img src="images\mode.jpeg" alt="tile3" width="200" height="320px" alt="house" /></a>
+      <div class="fadedbox">
+        <div class="title text"> Mode </div>
+      </div>
+    </div>
+	</div>
+		
 
 
 	<h2>Liste des enchères</h2>

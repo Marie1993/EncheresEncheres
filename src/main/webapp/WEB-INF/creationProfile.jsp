@@ -7,8 +7,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<link rel="stylesheet" type="text/css" href="CSS\CSS.css">
+<style type="text/css"> 
+a:link 
+{ 
+ text-decoration:none; 
+} 
+</style>
+
 <title>Insert title here</title>
 </head>
+
+	<header >
+	
+	
+		<h1>ENI-Enchères</h1>
+
+			<%@ include file="header_notconnected.jsp"%>
+	</header>
+
 <body>
 
 <!-- <div class="error_message">${requestScope.crationProfile}</div> -->
