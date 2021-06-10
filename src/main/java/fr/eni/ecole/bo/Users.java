@@ -276,6 +276,9 @@ public class Users {
 		super();
 		this.numUser = numUser;
 	}
+	public Users(String nickname) {
+		this.nickname = nickname;
+	}
 	/**
 	* {@inheritDoc}
 	*/

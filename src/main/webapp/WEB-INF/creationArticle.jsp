@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Mise en vente article</title>
+<title>Insert title here</title>
 </head>
 <body>
 
@@ -24,11 +24,10 @@
 		<textarea name="description" id="description" rows="10" cols="50"></textarea>
 
 		<div>
-			<label for="categories">Votre catégorie de vente :</label>
+			<label for="categories">Catégorie :</label>
 		</div>
 		<div>
 			<select name="categories" id="categories">
-				<option value="0">Toutes</option>
 				<option value="1">Informatique</option>
 				<option value="2">Ameublement</option>
 				<option value="3">Vêtements</option>
@@ -38,8 +37,6 @@
 		<!--  uploader image -->
 		
 	
-
-
 		<div>
 			<label for="sellerPrice">Votre prix de vente :</label>
 		</div>
@@ -60,7 +57,7 @@
 		<legend>Retrait</legend>
 		
 		<div>
-			<label for="numStreet">Adresse  :</label> <input type="text"
+			<label for="numStreet">Rue :</label> <input type="text"
 				name="numStreet" id="numStreet"
 				value="${sessionScope ['User'].numStreet}"
 				placeholder="${sessionScope ['User'].numStreet}" />
@@ -84,9 +81,8 @@
 
 		<div>
 			<input type="submit" value="Enregistrer">
-		
-		
-		<button onclick="window.location.href = '#';">Annuler</button>
+	
+		 <input type="button" onclick="window.location.href = 'http://localhost:8080/EncheresEncheres/';" value="Annuler"/>
 		</div>
 		
 	</form>

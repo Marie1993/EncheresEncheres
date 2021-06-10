@@ -41,6 +41,8 @@
 
 			<div>Prix actuel : ${sessionScope ['article'].sellingPrice}</div>
 
+			<div>Meilleure enchère : ${sessionScope ['article'].enchereur.nickname}</div>
+
 			<div>Vendeur : ${sessionScope ['article'].user.nickname}</div>
 
 			<div>Point de retrait : ${sessionScope ['article'].withdrawal.streetNum}</div>
@@ -51,12 +53,15 @@
 			<c:if test="${sessionScope.connexion != null}">
 				<c:if
 					test="${sessionScope ['User'].nickname != sessionScope ['article'].user.nickname}">
-					<form action="/EncheresEncheres/Servlet_article" method="post">
-						<label for="enchere">Enchérir</label><input type="number"
-							min="${sessionScope ['article'].sellingPrice}"
-							name="sellingPrice"> <input type="submit"
-							value="Enchérir">
-					</form>
+					<c:if
+						test="${sessionScope ['User'].nickname != sessionScope ['article'].enchereur.nickname}">
+						<form action="/EncheresEncheres/Servlet_article" method="post">
+							<label for="enchere">Enchérir</label><input type="number"
+								min="${sessionScope ['article'].sellingPrice}"
+								name="sellingPrice"> <input type="submit"
+								value="Enchérir">
+						</form>
+					</c:if>
 				</c:if>
 			</c:if>
 

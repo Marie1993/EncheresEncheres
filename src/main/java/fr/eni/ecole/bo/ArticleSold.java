@@ -24,6 +24,7 @@ public class ArticleSold {
 	private Users user;
 	private Auction auction;
 	private Withdrawal withdrawal;
+	private Users enchereur;
 	
 	
 	
@@ -44,7 +45,7 @@ public class ArticleSold {
 	 */
 	public ArticleSold(Integer articleNum, String articleName, String description, LocalDateTime auctionStartingDate,
 			LocalDateTime autionEndingDate, Integer startingPrice, Integer sellingPrice,
-			Category category, Users user, Withdrawal withdrawal) {
+			Category category, Users user, Users enchereur, Withdrawal withdrawal) {
 		super();
 		this.articleNum = articleNum;
 		this.articleName = articleName;
@@ -55,6 +56,7 @@ public class ArticleSold {
 		this.sellingPrice = sellingPrice;
 		this.category = category;
 		this.user = user;
+		this.enchereur = enchereur;
 		this.withdrawal = withdrawal;
 	}
 	/**
@@ -76,7 +78,7 @@ public class ArticleSold {
 	 * @param isSold
 	 */
 	public ArticleSold( String articleName, String description, LocalDateTime auctionStartingDate,
-			LocalDateTime autionEndingDate, Integer startingPrice, Integer sellingPrice, Users user, Category category, Withdrawal withdrawal) {
+			LocalDateTime autionEndingDate, Integer startingPrice, Integer sellingPrice, Users user, Users enchereur, Category category, Withdrawal withdrawal) {
 		super();
 		
 		this.articleName = articleName;
@@ -109,12 +111,13 @@ public class ArticleSold {
 	 * @param isSold
 	 * @param category
 	 * @param user
+	 * @param enchereur
 	 * @param auction
 	 * @param withdrawal
 	 */
 	public ArticleSold(Integer articleNum, String articleName, String description, LocalDateTime auctionStartingDate,
 			LocalDateTime auctionEndingDate, Integer startingPrice, Integer sellingPrice,
-			Category category, Users user, Auction auction, Withdrawal withdrawal) {
+			Category category, Users user, Withdrawal withdrawal) {
 		super();
 		this.articleNum = articleNum;
 		this.articleName = articleName;
@@ -125,22 +128,35 @@ public class ArticleSold {
 		this.sellingPrice = sellingPrice;
 		this.category = category;
 		this.user = user;
-		this.auction = auction;
 		this.withdrawal = withdrawal;
 	}
 	public ArticleSold(Integer articleNum, String articleName, String description, LocalDateTime auctionStartingDate,
-			LocalDateTime autionEndingDate, Integer startingPrice, Integer sellingPrice, Boolean isSold) {
+			LocalDateTime auctionEndingDate, Integer startingPrice, Integer sellingPrice, Boolean isSold) {
 		super();
 		this.articleNum = articleNum;
 		this.articleName = articleName;
 		this.description = description;
 		this.auctionStartingDate = auctionStartingDate;
-		this.auctionEndingDate = autionEndingDate;
+		this.auctionEndingDate = auctionEndingDate;
 		this.startingPrice = startingPrice;
 		this.sellingPrice = sellingPrice;
 		this.isSold = isSold;
 	}
 	
+	public ArticleSold(String articleName, String description, LocalDateTime auctionStartingDate,
+			LocalDateTime auctionEndingDate, Integer startingPrice, Integer sellingPrice, Users user,
+			Category category, Withdrawal withdrawal) {
+		super();
+		this.articleName = articleName;
+		this.description = description;
+		this.auctionStartingDate = auctionStartingDate;
+		this.auctionEndingDate = auctionEndingDate;
+		this.startingPrice = startingPrice;
+		this.sellingPrice = sellingPrice;
+		this.category = category;
+		this.user = user;
+		this.withdrawal = withdrawal;
+	}
 	/**
 	 * Getter pour articleNum.
 	 * @return the articleNum
@@ -279,6 +295,13 @@ public class ArticleSold {
 	public void setWithdrawal(Withdrawal withdrawal) {
 		this.withdrawal = withdrawal;
 	}
+	
+	public Users getEnchereur() {
+		return enchereur;
+	}
+	public void setEnchereur(Users enchereur) {
+		this.enchereur = enchereur;
+	}
 	/**
 	* {@inheritDoc}
 	*/
@@ -304,4 +327,5 @@ public class ArticleSold {
 		builder.append("]");
 		return builder.toString();
 	}
+	
 }
