@@ -17,7 +17,7 @@ header {
 
 body {
 	 box-sizing: content-box;
-	 width: 1024px;
+	 width: 1280px;
 
 	 
 	  margin-left: auto;
@@ -53,10 +53,68 @@ h1{
 } 
 
 
+.imgCategory {
+width: 200px; /* largeur à spécifier */
+height: 320px; /* longueur à spécifier */
+}
+
+#menu{
+	display : flex;
+	flex-direction: row;
+	justify-content: space-around;
+	
+}
 
 
-
-
+      .example {
+      cursor: pointer;
+      height: 320px;
+      position: relative;
+      overflow: hidden;
+      width: 200px;
+      text-align:center;
+      }
+      .example .fadedbox {
+      background-color: #2F4F4F;
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: #fff;
+      -webkit-transition: all 300ms ease-out;
+      -moz-transition: all 300ms ease-out;
+      -o-transition: all 300ms ease-out;
+      -ms-transition: all 300ms ease-out;
+      transition: all 300ms ease-out;
+      opacity: 0;
+      width: 200px;
+      height: 100px;
+      padding: 130px 0px;
+      
+      }
+      .example:hover .fadedbox { opacity: 0.8; }
+      .example .text {
+      -webkit-transition: all 300ms ease-out;
+      -moz-transition: all 300ms ease-out;
+      -o-transition: all 300ms ease-out;
+      -ms-transition: all 300ms ease-out;
+      transition: all 300ms ease-out;
+      transform: translateY(30px);
+      -webkit-transform: translateY(30px);
+      }
+      .example .title {
+      text-align: center;
+      font-size: 1.5em;
+      text-transform: uppercase;
+      opacity: 0;
+      transition-delay: 0.2s;
+      transition-duration: 0.3s;
+      }
+      .example:hover .title,
+      .example:focus .title {
+      opacity: 1;
+      transform: translateY(0px);
+      -webkit-transform: translateY(0px);
+      }
 
 
 
