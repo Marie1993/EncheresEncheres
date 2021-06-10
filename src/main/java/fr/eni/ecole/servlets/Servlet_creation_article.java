@@ -95,7 +95,7 @@ public class Servlet_creation_article extends HttpServlet {
 
 		Integer sellingPrice = startingPrice;
 		
-		// Permet de set le libellé par rapport à ce qui a été choisi dans la liste déroulante.
+		// Permet de set le libellï¿½ par rapport ï¿½ ce qui a ï¿½tï¿½ choisi dans la liste dï¿½roulante.
 		String wording = null;
 		switch (Integer.parseInt(request.getParameter("categories"))) {
 		case 1:
@@ -105,14 +105,14 @@ public class Servlet_creation_article extends HttpServlet {
 			wording = "Ameublement";
 			break;
 		case 3:
-			wording = "Vêtements";
+			wording = "VÃªtements";
 			break;
 		case 4:
 			wording = "Sports et loisirs";
 			break;
 
 		}
-		// On créé un article avec les constructeurs de User, Categorie et Withdrawal
+		// On crÃ©Ã©r un article avec les constructeurs de User, Categorie et Withdrawal
 		Category category = new Category(Integer.parseInt(request.getParameter("categories")), wording);
 		Users user = (Users) session.getAttribute("User");
 		Withdrawal withdrawal = new Withdrawal(numStreet, postalCode, city);
