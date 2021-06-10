@@ -78,6 +78,7 @@
 		</div>
 	</form>
 	
+	<a href = "/EncheresEncheres/Servlet">Retour à l'accueil</a>
 	<a href = "/EncheresEncheres/Servlet_delete_account">Supprimer mon compte</a>
 
 </body>
