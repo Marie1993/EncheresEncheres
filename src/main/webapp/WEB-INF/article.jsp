@@ -41,9 +41,21 @@
 
 			<div>Prix actuel : ${sessionScope ['article'].sellingPrice}</div>
 
-			<div>Meilleure enchère : ${sessionScope ['article'].enchereur.nickname}</div>
+			<div>
+				Meilleure enchère : <a
+					href="<c:url value="/Servlet_show_user">
+            <c:param name="nickname" value="${sessionScope ['article'].enchereur.nickname}"/>
+        </c:url>
+    ">${sessionScope ['article'].enchereur.nickname}</a>
+			</div>
 
-			<div>Vendeur : ${sessionScope ['article'].user.nickname}</div>
+			<div>
+				Vendeur : <a
+					href="<c:url value="/Servlet_show_user">
+            <c:param name="nickname" value="${sessionScope ['article'].user.nickname}"/>
+        </c:url>
+    ">${sessionScope ['article'].user.nickname}</a>
+			</div>
 
 			<div>Point de retrait : ${sessionScope ['article'].withdrawal.streetNum}</div>
 
