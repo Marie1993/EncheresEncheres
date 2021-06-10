@@ -78,14 +78,18 @@ public class Servlet_article extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+			article = articleManager.Select_article(article.getArticleNum());
+			session.setAttribute("article", article);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 		// S'il n'a jamais fait d'enchère, cela en créé une.
-
-		RequestDispatcher rd = request.getRequestDispatcher("/Servlet");
+		// On renvoie sur la page.
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/article.jsp");
 		rd.forward(request, response);
+		
 	}
 
 }
