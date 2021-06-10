@@ -4,8 +4,27 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="CSS\CSS.css">
+<style type="text/css"> 
+a:link 
+{ 
+ text-decoration:none; 
+} 
+</style>
 <title>Insert title here</title>
 </head>
+
+<header >
+	
+	
+		<h1>ENI-Enchères</h1>
+
+		<c:if test="${sessionScope.connexion != null}">
+			<%@ include file="header_connected.jsp"%>
+		</c:if>
+
+	</header>
+
 <body>
 
 	<form method="post" action="/EncheresEncheres/Servlet_creation_article">

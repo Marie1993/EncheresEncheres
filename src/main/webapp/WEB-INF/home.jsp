@@ -9,14 +9,17 @@
 <meta charset="UTF-8">
 
 <link rel="stylesheet" type="text/css" href="CSS\CSS.css">
+<style type="text/css"> 
+a:link 
+{ 
+ text-decoration:none; 
+} 
+</style>
+
 <title>Accueil</title>
-
-
-
-</head>
-<body>
-
-	<header>
+	<header >
+	
+	
 		<h1>ENI-Enchères</h1>
 
 		<c:if test="${sessionScope.connexion eq null}">
@@ -29,6 +32,12 @@
 
 	</header>
 
+
+
+</head>
+<body>
+
+<img src = "images\ban2.jpeg" id = "ban"/>
 
 
 

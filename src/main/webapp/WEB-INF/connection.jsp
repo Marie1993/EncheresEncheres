@@ -5,9 +5,28 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="CSS\Template.css">
-
+<link rel="stylesheet" type="text/css" href="CSS\CSS.css">
+<style type="text/css"> 
+a:link 
+{ 
+ text-decoration:none; 
+} 
+</style>
 <title>Se connecter</title>
 </head>
+
+<header >
+	
+	
+		<h1>ENI-Enchères</h1>
+
+		<c:if test="${sessionScope.connexion eq null}">
+			<%@ include file="header_notconnected.jsp"%>
+		</c:if>
+
+
+	</header>
+
 <body>
 <div class = "body">
 
