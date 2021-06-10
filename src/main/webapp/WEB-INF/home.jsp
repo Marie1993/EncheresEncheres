@@ -9,35 +9,34 @@
 <meta charset="UTF-8">
 
 <link rel="stylesheet" type="text/css" href="CSS\CSS.css">
-<style type="text/css"> 
-a:link 
-{ 
- text-decoration:none; 
-} 
+<style type="text/css">
+a:link {
+	text-decoration: none;
+}
 </style>
 
 <title>Accueil</title>
-	<header >
-	
-	
-		<h1>ENI-Enchères</h1>
+<header>
 
-		<c:if test="${sessionScope.connexion eq null}">
-			<%@ include file="header_notconnected.jsp"%>
-		</c:if>
 
-		<c:if test="${sessionScope.connexion != null}">
-			<%@ include file="header_connected.jsp"%>
-		</c:if>
+	<h1>ENI-Enchères</h1>
 
-	</header>
+	<c:if test="${sessionScope.connexion eq null}">
+		<%@ include file="header_notconnected.jsp"%>
+	</c:if>
+
+	<c:if test="${sessionScope.connexion != null}">
+		<%@ include file="header_connected.jsp"%>
+	</c:if>
+
+</header>
 
 
 
 </head>
 <body>
 
-<img src = "images\ban2.jpeg" id = "ban"/>
+	<img src="images\ban2.jpeg" id="ban" />
 
 
 
@@ -76,9 +75,12 @@ a:link
         </c:url>
     ">${ArticleSold.articleName}</a>
 			Prix : ${ArticleSold.sellingPrice} Fin de l'enchère :
-			${ArticleSold.auctionEndingDate} Vendeur :
-			${ArticleSold.user.nickname}
-			
+			${ArticleSold.auctionEndingDate} Vendeur : <a
+				href="<c:url value="/Servlet_show_user">
+            <c:param name="nickname" value="${ArticleSold.user.nickname}"/>
+        </c:url>
+    ">${ArticleSold.user.nickname}</a>
+
 
 		</div>
 
