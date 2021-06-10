@@ -33,17 +33,17 @@
 
 		<div>Prénom : ${User.surname}</div>
 
-		<div>Email : $User.email</div>
+		<div>Email : ${User.email}</div>
 
-		<div>Téléphone : $User.phone</div>
+		<div>Téléphone : ${User.phone}</div>
 
-		<div>Rue : $User.numStreet</div>
+		<div>Rue : ${User.numStreet}</div>
 
-		<div>Code postal : $User.postalCode</div>
+		<div>Code postal : ${User.postalCode}</div>
 
-		<div>Ville : $User.city</div>
+		<div>Ville : ${User.city}</div>
 		
-		<div>Crédit : $User.credit</div>
+		<div>Crédit : ${User.credit}</div>
 	</div>
 </div>
 
