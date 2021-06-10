@@ -36,7 +36,7 @@ public class FilterInformatic implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
-		if(httpRequest.getServletPath().contains("informatique")) {
+		if(httpRequest.getServletPath().contains(article.categoryNum=1)) {
 			chain.doFilter(request, response);
 		}
 		

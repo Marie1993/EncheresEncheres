@@ -20,7 +20,7 @@ public abstract class ConnectionProvider {
 	static DataSource dataSource;
 	
 	/**
-	 * Au chargement de la classe, la DataSource est recherchée dans l'arbre JNDI
+	 * Au chargement de la classe, la DataSource est recherchï¿½e dans l'arbre JNDI
 	 */
 	static
 	{
@@ -30,13 +30,13 @@ public abstract class ConnectionProvider {
 			ConnectionProvider.dataSource = (DataSource)context.lookup("java:comp/env/jdbc/pool_cnx");
 		} catch (NamingException e) {
 			e.printStackTrace();
-			throw new RuntimeException("Impossible d'accéder à la base de données");
+			throw new RuntimeException("Impossible d'accÃ©der ï¿½ la base de donnÃ©es");
 		}
 	}
 	
 	/**
-	 * Cette méthode retourne une connection opérationnelle issue du pool de connexion
-	 * vers la base de données. 
+	 * Cette mï¿½thode retourne une connection opï¿½rationnelle issue du pool de connexion
+	 * vers la base de donnï¿½es. 
 	 * @return
 	 * @throws SQLException
 	 */

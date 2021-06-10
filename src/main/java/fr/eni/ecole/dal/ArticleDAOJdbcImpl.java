@@ -17,7 +17,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 	private final String INSERT = "insert into ARTICLES_VENDUS(nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie)values(?,?,?,?,?,?,?,?)";
 
-	// On récupère ce dont on a besoin + les id.
+	// On rï¿½cupï¿½re ce dont on a besoin + les id.
 	private final String SELECT_ARTICLE_WITHNUM = "SELECT DISTINCT Articles_vendus.no_article, Articles_vendus.nom_article, Articles_vendus.description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, CATEGORIES.no_categorie, CATEGORIES.libelle, UTILISATEURS.no_utilisateur,UTILISATEURS.pseudo, Retraits.no_article, Retraits.rue, Retraits.code_postal, Retraits.ville, (SELECT UTILISATEURS.pseudo\r\n"
 			+ "FROM ENCHERES INNER JOIN UTILISATEURS on Encheres.no_utilisateur = UTILISATEURS.no_utilisateur where Encheres.no_article = ?\r\n"
 			+ "and ENCHERES.montant_enchere = (SELECT MAX (Encheres.montant_enchere) FROM ENCHERES INNER JOIN UTILISATEURS on Encheres.no_utilisateur = UTILISATEURS.no_utilisateur where Encheres.no_article = ?))\r\n"
@@ -34,7 +34,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	public ArticleSold Select_article(int articleNum) {
 		ArticleSold article = new ArticleSold();
 		// Modifier la classe Article pour qu'elle ait un utilisateur et un point de
-		// retrait et une catégorie. On met les colonnes correspondantes puis on ajoute.
+		// retrait et une catï¿½gorie. On met les colonnes correspondantes puis on ajoute.
 		try (Connection cnx = ConnectionProvider.getConnection()) {
 			PreparedStatement pstmt = cnx.prepareStatement(SELECT_ARTICLE_WITHNUM);
 			pstmt.setInt(1, articleNum);
@@ -43,14 +43,14 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
 				Users user = new Users(rs.getInt(10), rs.getString(11));
-				Users enchereur = new Users (rs.getString(16));
+				Users enchereur = new Users(rs.getString(16));
 				Category category = new Category(rs.getInt(8), rs.getString(9));
 				Withdrawal withdrawal = new Withdrawal(rs.getString(13), rs.getString(14), rs.getString(15));
 				article = new ArticleSold(rs.getInt(1), rs.getString(2), rs.getString(3),
 						rs.getTimestamp(4).toLocalDateTime(), rs.getTimestamp(5).toLocalDateTime(), rs.getInt(6),
 						rs.getInt(7), category, user, enchereur, withdrawal);
 			}
-			// On récupère le TimeStamp que l'on convertit ensuite en LocalDateTime pour
+			// On rï¿½cupï¿½re le TimeStamp que l'on convertit ensuite en LocalDateTime pour
 			// l'ajouter dans le constructeur.
 
 		} catch (Exception e) {
