@@ -7,7 +7,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<link rel="stylesheet" type="text/css" href="CSS\CSS.css">
 <title>Accueil</title>
+
+
+
 </head>
 <body>
 

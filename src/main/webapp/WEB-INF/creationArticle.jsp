@@ -24,11 +24,10 @@
 		<textarea name="description" id="description" rows="10" cols="50"></textarea>
 
 		<div>
-			<label for="categories">Votre prix de vente :</label>
+			<label for="categories">Catégorie :</label>
 		</div>
 		<div>
 			<select name="categories" id="categories">
-				<option value="0">Toutes</option>
 				<option value="1">Informatique</option>
 				<option value="2">Ameublement</option>
 				<option value="3">Vêtements</option>
@@ -38,8 +37,6 @@
 		<!--  uploader image -->
 		
 	
-
-
 		<div>
 			<label for="sellerPrice">Votre prix de vente :</label>
 		</div>
@@ -84,9 +81,8 @@
 
 		<div>
 			<input type="submit" value="Enregistrer">
-		
-		
-		<button onclick="window.location.href = '#';">Annuler</button>
+	
+		 <input type="button" onclick="window.location.href = 'http://localhost:8080/EncheresEncheres/';" value="Annuler"/>
 		</div>
 		
 	</form>
