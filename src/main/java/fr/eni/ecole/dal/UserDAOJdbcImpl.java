@@ -21,7 +21,9 @@ public class UserDAOJdbcImpl implements UserDAO {
 	private static final String INSERT_USER = " insert into utilisateurs (pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,credit,administrateur) values (?,?,?,?,?,?,?,?,?,?,?)";
 	private final String UPDATE_ACCOUNT = "UPDATE Utilisateurs SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ? WHERE no_utilisateur = ? ;";
 	private final String DELETE_USER = "DELETE FROM Utilisateurs WHERE no_utilisateur = ?;";
-	private final String UPDATE_CREDIT = "UPDATE Utilisateurs SET credit = ? where no_utilisateur = ?;";
+	private final String UPDATE_CREDIT_SUBTRACT = "UPDATE UTILISATEURS SET credit = credit - ? where pseudo = ?;";
+	private final String UPDATE_CREDIT_REFUND = "UPDATE UTILISATEURS SET credit = credit + ? where pseudo = ?;";
+
 
 	Connection seConnecter() throws SQLException {
 		Connection cnx = ConnectionProvider.getConnection();
@@ -144,11 +146,25 @@ public class UserDAOJdbcImpl implements UserDAO {
 		}
 	}
 
-	public void Update_credit(ArticleSold article) throws SQLException {
+	public void Update_credit_subtract(ArticleSold article) throws SQLException {
 		try (Connection cnx = ConnectionProvider.getConnection()) {
-			PreparedStatement pstmt = cnx.prepareStatement(UPDATE_CREDIT);
-			pstmt.setInt(1, article.getUser().getCredit() - article.getSellingPrice());
-			pstmt.setInt(2, article.getUser().getNumUser());
+			PreparedStatement pstmt = cnx.prepareStatement(UPDATE_CREDIT_SUBTRACT);
+			pstmt.setInt(1, article.getSellingPrice());
+			pstmt.setString(2, article.getUser().getNickname());
+			pstmt.executeUpdate();
+			pstmt.close();
+			cnx.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	public void Update_credit_refund(ArticleSold article) throws SQLException {
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+			PreparedStatement pstmt = cnx.prepareStatement(UPDATE_CREDIT_REFUND);
+			pstmt.setInt(1, article.getSellingPrice());
+			pstmt.setString(2, article.getEnchereur().getNickname());
 			pstmt.executeUpdate();
 			pstmt.close();
 			cnx.close();

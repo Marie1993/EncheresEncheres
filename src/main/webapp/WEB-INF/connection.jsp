@@ -32,6 +32,8 @@ a:link
 
 
 	<div class="error_message">${requestScope.connexion}</div>
+	
+	<div class="error_message">${requestScope.refusconnexion}</div>
 
 	<form method="POST" action="/EncheresEncheres/Servlet_login">
 		<div class="form">

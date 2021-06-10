@@ -13,6 +13,8 @@
 	<a href="/EncheresEncheres/Servlet">Accueil</a>
 	<a href="/EncheresEncheres/Servlet_profile">Mon profil</a>
 	<a href="/EncheresEncheres/Servlet_creation_article">Vendre un article</a>
+	<a href="/EncheresEncheres/Servlet_articles_user">Mes articles</a>
+	<a href="/EncheresEncheres/Servlet_auctions_user">Mes enchères</a>
 	<a href="/EncheresEncheres/Servlet_logout">Me déconnecter</a>
 </div>
 

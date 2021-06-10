@@ -131,7 +131,7 @@ public class UsersManager {
 		UserDAO.Delete_User(numUser);
 		
 	}
-	
+		
 	
 	
 

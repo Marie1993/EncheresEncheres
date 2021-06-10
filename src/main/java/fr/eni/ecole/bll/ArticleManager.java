@@ -2,8 +2,10 @@ package fr.eni.ecole.bll;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 import fr.eni.ecole.bo.ArticleSold;
+import fr.eni.ecole.bo.Users;
 import fr.eni.ecole.dal.ArticleDAO;
 import fr.eni.ecole.dal.DAOFactory;
 
@@ -50,6 +52,16 @@ public class ArticleManager {
 
 	public void Update_article(int sellingPrice, Integer articleNum) {
 		this.articleDAO.Update_article(sellingPrice, articleNum);
+		
+	}
+	
+	public ArrayList <ArticleSold> Select_by_user (Users user) throws SQLException {
+		return this.articleDAO.Select_by_user(user);
+		
+	}
+	
+	public ArrayList <ArticleSold> Select_user_auctions (Users user) throws SQLException {
+		return this.articleDAO.Select_user_auctions(user);
 		
 	}
 
