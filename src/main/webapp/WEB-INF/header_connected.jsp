@@ -9,12 +9,12 @@
 </head>
 <body>
 
-
+<div class = nav>
 	<a href="/EncheresEncheres/Servlet">Accueil</a>
 	<a href="/EncheresEncheres/Servlet_profile">Mon profil</a>
 	<a href="/EncheresEncheres/Servlet_creation_article">Vendre un article</a>
 	<a href="/EncheresEncheres/Servlet_logout">Me déconnecter</a>
-
+</div>
 
 
 </body>

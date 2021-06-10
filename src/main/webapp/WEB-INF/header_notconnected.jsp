@@ -8,9 +8,11 @@
 </head>
 <body>
 
+<div class = nav>
 	<a href="/EncheresEncheres/Servlet">Accueil</a>
-	<a href="/EncheresEncheres/Servlet_account_creation">S'inscrire -</a>
+	<a href="/EncheresEncheres/Servlet_account_creation">S'inscrire</a>
 	<a href="/EncheresEncheres/Servlet_login">Se connecter</a>
+</div>
 
 </body>
 </html>
