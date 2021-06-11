@@ -31,7 +31,7 @@ a:link
 
 		<h1>Mettre un bien en ligne</h1>
 
-		
+		<div class ="form">
 		<div>
 			<label for="nameArticle">Titre annonce :</label>
 		</div>
@@ -98,12 +98,12 @@ a:link
 		
 		</fieldset>
 
-		<div>
-			<input type="submit" value="Enregistrer">
+		<div class="btn">
+			<input type="submit" class="button" value="Enregistrer">
 	
-		 <input type="button" onclick="window.location.href = 'http://localhost:8080/EncheresEncheres/';" value="Annuler"/>
+		 <input class="button"  type="button" onclick="window.location.href = 'http://localhost:8080/EncheresEncheres/';" value="Annuler"/>
 		</div>
-		
+		</div>
 	</form>
 
 </body>

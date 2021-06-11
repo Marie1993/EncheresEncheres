@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="CSS\Template.css">
+
 <link rel="stylesheet" type="text/css" href="CSS\CSS.css">
 <style type="text/css"> 
 a:link 
@@ -34,6 +34,7 @@ a:link
 	<div class="error_message">${requestScope.connexion}</div>
 	
 	<div class="error_message">${requestScope.refusconnexion}</div>
+
 
 	<form method="POST" action="/EncheresEncheres/Servlet_login">
 		<div class="form">

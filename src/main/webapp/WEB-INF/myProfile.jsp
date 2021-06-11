@@ -16,9 +16,11 @@ a:link {
 
 <title></title>
 </head>
-<body>
+<body> 
 <div class = "page">
 	<header>
+
+	<h1>ENI-Enchères</h1>
 
 		<c:if test="${sessionScope.connexion eq null}">
 			<%@ include file="header_notconnected.jsp"%>
@@ -29,7 +31,10 @@ a:link {
 			<%@ include file="header_connected.jsp"%>
 		</c:if>
 	</header>
-
+	
+	<h1>Modifier mon profil</h1>
+	
+<div  class="form">
 	<div class="profil">
 		
 		
@@ -52,9 +57,9 @@ a:link {
 		
 		<div>Crédit : ${User.credit}</div>
 	</div>
-</div>
+
 
 <a href="/EncheresEncheres//Servlet_modif_profile">Modifier mon profil</a>
-
+</div></div>
 </body>
 </html>
