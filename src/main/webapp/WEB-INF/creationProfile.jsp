@@ -53,7 +53,7 @@ a:link
 
   <h1> Inscription</h1>
   
-   <p>
+   <div class="form">
        <div> <label for="pseudo">Votre pseudo :</label></div>
        <input type="text" name="pseudo" id="pseudo" /> 
        
@@ -80,12 +80,12 @@ a:link
        <input type="text" name="postalCode" id="postalCode" /> 
        
        <div><label for="city">Votre ville :</label></div>
-       <input type="text" name="city" id="city" /> 
+       <input type="text" name="city" id="city" /> <br>
        
-       <div><input type="submit" value = "Valider">
+       <div class = "btn"><input type="submit" value = "Valider">
         <input type="button" onclick="window.location.href = 'http://localhost:8080/EncheresEncheres/';" value="Annuler"/>
        </div>  
-   </p>
+   </div>
 </form>
 
 </body>
