@@ -39,7 +39,7 @@ public class Servlet extends HttpServlet {
 			ArrayList <ArticleSold> liste_article = articleDAO.Select_all();
 			session.setAttribute("liste_article", liste_article);
 			if (session.getAttribute("connexion") != null)
-				// Si l'user est connecté : on affiche les enchères finies, les gagnées et les perdues
+				// Si l'user est connectÃ© : on affiche les enchÃ¨res finies, les gagnÃ©es et les perdues
 			{Users user = (Users) session.getAttribute("User");
 			ArrayList <ArticleSold> liste_article_won = articleDAO.Select_article_won_user(user);
 			session.setAttribute("liste_article_won", liste_article_won);
