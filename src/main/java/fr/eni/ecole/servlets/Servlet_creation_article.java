@@ -110,7 +110,7 @@ public class Servlet_creation_article extends HttpServlet {
 	       
 		Integer startingPrice = Integer.parseInt(request.getParameter("sellerPrice"));
 		System.out.println("prix " + startingPrice);
-		if ( startingPrice == null ) {
+		if ( startingPrice == 0 ) {
 			System.out.println("erreur prix null");
 			 listeCodesErreurs.add(CodesResultatServlets.STARTING_PRICE_BLANCK);
 			} 

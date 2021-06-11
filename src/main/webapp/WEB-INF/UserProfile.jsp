@@ -19,7 +19,7 @@ a:link {
 <body>
 <div class = "page">
 	<header>
-
+<h1>ENI-Enchères</h1>
 		<c:if test="${sessionScope.connexion eq null}">
 			<%@ include file="header_notconnected.jsp"%>
 		</c:if>
@@ -29,7 +29,7 @@ a:link {
 			<%@ include file="header_connected.jsp"%>
 		</c:if>
 	</header>
-
+<div id="article">
 	<div class="profil">
 		
 		
@@ -51,7 +51,7 @@ a:link {
 		<div>Ville : ${User_profile.city}</div>
 		
 	</div>
-</div>
+</div></div>
 
 </body>
 </html>
