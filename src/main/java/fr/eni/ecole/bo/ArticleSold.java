@@ -158,6 +158,20 @@ public class ArticleSold {
 		this.withdrawal = withdrawal;
 	}
 	/**
+	 * @param articleNum
+	 * @param articleName
+	 * @param sellingPrice
+	 * @param enchereur
+	 * Pour afficher les ventes terminées
+	 */
+	public ArticleSold(Integer articleNum, String articleName, Integer sellingPrice, Users enchereur) {
+		super();
+		this.articleNum = articleNum;
+		this.articleName = articleName;
+		this.sellingPrice = sellingPrice;
+		this.enchereur = enchereur;
+	}
+	/**
 	 * Getter pour articleNum.
 	 * @return the articleNum
 	 */

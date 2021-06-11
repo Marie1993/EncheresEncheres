@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import fr.eni.ecole.bo.ArticleSold;
+import fr.eni.ecole.bo.Users;
 import fr.eni.ecole.dal.ArticleDAOJdbcImpl;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -36,6 +37,11 @@ public class Servlet extends HttpServlet {
 		try {
 			ArrayList <ArticleSold> liste_article = articleDAO.Select_all();
 			session.setAttribute("liste_article", liste_article);
+			if (session.getAttribute("connexion") != null)
+			{Users user = (Users) session.getAttribute("User");
+			ArrayList <ArticleSold> liste_article_won = articleDAO.Select_article_won_user(user);
+			session.setAttribute("liste_article_won", liste_article_won);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
