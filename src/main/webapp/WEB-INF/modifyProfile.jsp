@@ -24,10 +24,13 @@ a:link
 	</header>
 
 <body>
-
+ 
+ 
 	<form method="post" action="/EncheresEncheres/Servlet_modif_profile">
 
 		<h1>Modifier mon profil</h1>
+		
+		<div class="form">
 
 		<input type="hidden" id="numUser" name="numUser"
 			value="${sessionScope ['User'].numUser}"
@@ -97,6 +100,6 @@ a:link
 	
 	<a href = "/EncheresEncheres/Servlet">Retour à l'accueil</a>
 	<a href = "/EncheresEncheres/Servlet_delete_account">Supprimer mon compte</a>
-
+</div>
 </body>
 </html>

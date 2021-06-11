@@ -35,20 +35,20 @@ a:link {
 
 </head>
 <body>
-
+<div class="recherche">
 	<img src="images\ban2.jpeg" id="ban" />
 
 
 
-	<h3>Filtres :</h3>
+	<h3>un bien particulier à touver ? </h3>
 	<label for="site-search"></label>
 	<input type="search" id="site-search" name="q"
 		aria-label="Search through site content"
 		placeholder="Le nom de l'article contient">
 
-	<button>Rechercher</button>
-
-	<h4>Catégorie :</h4>
+	<button class="button">Rechercher</button>
+</div>
+	
 	
 	
 	<div id="menu">
@@ -82,32 +82,39 @@ a:link {
     </div>
 	</div>
 		
+	<h2>Touts nos biens disponibles : </h2>
+	
+<div id="AuctionsAll">
 
-
-	<h2>Liste des enchères</h2>
+	
+	<div class="listAuction">
 	<c:forEach items="${liste_article}" var="ArticleSold">
 
 
-		<div>
+		
 
-			<a
+			<h4><a
 				href="<c:url value="/Servlet_article">
             <c:param name="num" value="${ArticleSold.articleNum}"/>
         </c:url>
-    ">${ArticleSold.articleName}</a>
-			Prix : ${ArticleSold.sellingPrice} Fin de l'enchère :
-			${ArticleSold.auctionEndingDate} Vendeur : <a
+    ">${ArticleSold.articleName}</a></h4>
+    
+		<div>	Prix : ${ArticleSold.sellingPrice} </div>
+		
+		<div>Fin de l'enchère :
+			${ArticleSold.auctionEndingDate} </div>
+			Vendeur : <a
 				href="<c:url value="/Servlet_show_user">
             <c:param name="nickname" value="${ArticleSold.user.nickname}"/>
         </c:url>
-    ">${ArticleSold.user.nickname}</a>
+    ">${ArticleSold.user.nickname}</a></div>
 
 
-		</div>
-
+		
+	<div class="listAuction">
 	</c:forEach>
 
-
+</div></div>
 
 
 

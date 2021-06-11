@@ -15,9 +15,9 @@ a:link {
 <title></title>
 </head>
 <body>
-	<div class="page">
+	
 		<header>
-
+			<h1>ENI-Enchères</h1>
 			<c:if test="${sessionScope.connexion eq null}">
 				<%@ include file="header_notconnected.jsp"%>
 			</c:if>
@@ -28,8 +28,8 @@ a:link {
 			</c:if>
 		</header>
 
-		<div class="profil">
-
+		
+<div id="article">
 
 
 			<div>Nom de l'article : ${sessionScope ['article'].articleName}</div>
@@ -85,7 +85,7 @@ a:link {
 
 		</div>
 	</div>
-
+</div>
 
 
 </body>

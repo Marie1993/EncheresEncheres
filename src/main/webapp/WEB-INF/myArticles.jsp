@@ -16,6 +16,7 @@ a:link {
 </head>
 <body>
 <header>
+<h1>ENI-Enchères</h1>
 <c:if test="${sessionScope.connexion eq null}">
 		<%@ include file="header_notconnected.jsp"%>
 	</c:if>
@@ -25,23 +26,36 @@ a:link {
 	</c:if>
 </header>
 
+<h1>Mes articles</h1>
+
+
+
 <c:forEach items="${liste_article_user}" var="ArticleSoldUser">
 
 
-		<div>
+		
+<div id="article">
 
-			<a
+			<div><a
 				href="<c:url value="/Servlet_article">
+           
+           
+
             <c:param name="num" value="${ArticleSoldUser.articleNum}"/>
         </c:url>
-    ">${ArticleSoldUser.articleName}</a>
-			Prix : ${ArticleSoldUser.sellingPrice} Fin de l'enchère :
-			${ArticleSoldUser.auctionEndingDate} 
+    ">${ArticleSoldUser.articleName}</a> </div><br>
+			Prix : ${ArticleSoldUser.sellingPrice} <br>
+			
+			Fin de l'enchère :
+			${ArticleSoldUser.auctionEndingDate} </div>
 
 
-		</div>
 
-	</c:forEach>
+	
+	
+	</c:forEach> 
+	
+	
 
 </body>
 </html>
