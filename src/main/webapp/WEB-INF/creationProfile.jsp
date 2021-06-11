@@ -29,9 +29,7 @@ a:link
 
 <body>
 
-<!-- <div class="error_message">${requestScope.crationProfile}</div> -->
-
-
+<div class="error_message">
 	<%
 			List<Integer> listeCodesErreurs = (List<Integer>)request.getAttribute("listeCodesErreurs");
 			if(listeCodesErreurs!=null)
@@ -42,12 +40,13 @@ a:link
 		
 					%>
 					
-					<p style ="color:red"><%=LecteurMessages.getMessageErreur(codeErreur)%></p>
+					<p><%=LecteurMessages.getMessageErreur(codeErreur)%></p>
 		<%	
 					
 				}
 			}
 		%>
+</div> 
 
 <form method="post" action="/EncheresEncheres/Servlet_account_creation">
 
