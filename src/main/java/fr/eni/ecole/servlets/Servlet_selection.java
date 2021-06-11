@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import fr.eni.ecole.bo.ArticleSold;
-import fr.eni.ecole.bo.Users;
 import fr.eni.ecole.dal.ArticleDAOJdbcImpl;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -15,52 +14,38 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-
-
-
 /**
- * Servlet implementation class Servlet
+ * Servlet implementation class Servlet_selection
  */
-
-@WebServlet("/Servlet")
-public class Servlet extends HttpServlet {
+@WebServlet("/Servlet_selection")
+public class Servlet_selection extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public static boolean connection = false;
+  
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ArticleDAOJdbcImpl ArticleDAO = new ArticleDAOJdbcImpl();
 		HttpSession session = request.getSession();
-		ArticleDAOJdbcImpl articleDAO = new ArticleDAOJdbcImpl ();
+		int numCat = Integer.parseInt(request.getParameter("numCat"));
 		try {
-			// On affiche la liste de tous les articles.
-			ArrayList <ArticleSold> liste_article = articleDAO.Select_all();
-			session.setAttribute("liste_article", liste_article);
-			if (session.getAttribute("connexion") != null)
-				// Si l'user est connecté : on affiche les enchères finies, les gagnées et les perdues
-			{Users user = (Users) session.getAttribute("User");
-			ArrayList <ArticleSold> liste_article_won = articleDAO.Select_article_won_user(user);
-			session.setAttribute("liste_article_won", liste_article_won);
-			ArrayList <ArticleSold> liste_article_lost = articleDAO.Select_article_lost_user(user);
-			session.setAttribute("liste_article_lost", liste_article_lost);
-			}
+			ArrayList <ArticleSold> liste_categorie = ArticleDAO.Select_all_category(numCat);
+			session.setAttribute("liste_categorie", liste_categorie);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/home.jsp");
-		
-	
-		rd.forward(request,  response);
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/homeFilter.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		doGet(request, response);
 	}
 

@@ -96,25 +96,25 @@ a:link {
 
 
 		<div class="listAuction">
-			<c:forEach items="${liste_article}" var="ArticleSold">
+			<c:forEach items="${liste_categorie}" var="ArticleCategory">
 
 
 				<h4>
 					<a
 						href="<c:url value="/Servlet_article">
-            <c:param name="num" value="${ArticleSold.articleNum}"/>
+            <c:param name="num" value="${ArticleCategory.articleNum}"/>
         </c:url>
-    ">${ArticleSold.articleName}</a>
+    ">${ArticleCategory.articleName}</a>
 				</h4>
 
-				<div>Prix : ${ArticleSold.sellingPrice}</div>
+				<div>Prix : ${ArticleCategory.sellingPrice}</div>
 
-				<div>Fin de l'enchère : ${ArticleSold.auctionEndingDate}</div>
+				<div>Fin de l'enchère : ${ArticleCategory.auctionEndingDate}</div>
 			Vendeur : <a
 					href="<c:url value="/Servlet_show_user">
-            <c:param name="nickname" value="${ArticleSold.user.nickname}"/>
+            <c:param name="nickname" value="${ArticleCategory.user.nickname}"/>
         </c:url>
-    ">${ArticleSold.user.nickname}</a>
+    ">${ArticleCategory.user.nickname}</a>
 		</div>
 
 
