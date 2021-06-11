@@ -14,6 +14,10 @@ public abstract class CodesResultatServlets {
 		
 		public static final int PASSWORD_EMAIL=30005;	
 		
+		public static final int AUCTION_DATE_LATE =30006;	
+		
+		public static final int STARTING_PRICE_BLANCK =30007;	
+	
 		
 		public static final int AUCTION_START_DATE_FORMAT_ERREUR = 30010;
 		 

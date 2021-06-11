@@ -52,6 +52,8 @@ public class Servlet_creation_article extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		List<Integer>listeCodesErreurs = new ArrayList<>();
+		
 		HttpSession session = request.getSession();
 
 		String articleName = request.getParameter("nameArticle");
@@ -86,12 +88,32 @@ public class Servlet_creation_article extends HttpServlet {
 			e.printStackTrace();
 			ListeCodesErreur.add(CodesResultatServlets.AUCTION_END_DATE_FORMAT_ERREUR);
 		}
+		
+	
 
 		System.out.println("date debut" + auctionStartingDate);
 		System.out.println("date debut" + auctionEndingDate);
-
+		
+		
+		 int compareValue = auctionStartingDate.compareTo(auctionEndingDate);
+         
+	        System.out.println("Compare value = " + compareValue);
+	         
+	        if(compareValue > 0) 
+	        {
+	            System.out.println("auctionStartingDate is later than auctionEndingDate");
+	            listeCodesErreurs.add(CodesResultatServlets.AUCTION_DATE_LATE);  
+	            
+	        }
+	            
+	            
+	       
 		Integer startingPrice = Integer.parseInt(request.getParameter("sellerPrice"));
 		System.out.println("prix " + startingPrice);
+		if ( startingPrice == null ) {
+			System.out.println("erreur prix null");
+			 listeCodesErreurs.add(CodesResultatServlets.STARTING_PRICE_BLANCK);
+			} 
 
 		Integer sellingPrice = startingPrice;
 		
@@ -112,6 +134,20 @@ public class Servlet_creation_article extends HttpServlet {
 			break;
 
 		}
+		
+		
+		if(listeCodesErreurs.size()>0) {
+			//je renvoie les erreurs et retourne sur l'article
+			request.setAttribute("listeCodesErreurs", listeCodesErreurs);
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/creationArticle.jsp");
+			rd.forward(request, response);
+			System.out.println("il y a bien des erreurs utilisateurs");
+		}
+		else 
+		{
+			
+			
+			
 		// On créér un article avec les constructeurs de User, Categorie et Withdrawal
 		Category category = new Category(Integer.parseInt(request.getParameter("categories")), wording);
 		Users user = (Users) session.getAttribute("User");
@@ -126,9 +162,13 @@ public class Servlet_creation_article extends HttpServlet {
 			articleDaojdbcImpl.Insert_auction(article);
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/article.jsp");
 			rd.forward(request, response);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		}
+		
 
 		// recuperer les infos / au retrait
 
