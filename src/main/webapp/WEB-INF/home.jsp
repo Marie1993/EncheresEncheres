@@ -49,42 +49,42 @@ a:link {
 	</div>
 
 
+	<form>
+		<div id="menu">
 
-	<div id="menu">
+			<div class="example">
+				<a href=#><img src="images\inf.jpeg" alt="tile3" width="200"
+					height="320px" alt="house" /></a>
+				<div class="fadedbox">
+					<div class="title text">Informatique</div>
+				</div>
+			</div>
 
-		<div class="example">
-			<a href=#><img src="images\inf.jpeg" alt="tile3" width="200"
-				height="320px" alt="house" /></a>
-			<div class="fadedbox">
-				<div class="title text">Informatique</div>
+			<div class="example">
+				<a href="<c:url value="/Servlet_selection"><c:param name="numCat" value="4"/></c:url>"><img src="images\sport.jpeg" alt="tile3" width="200"
+					height="320px" alt="house" /></a>
+				<div class="fadedbox">
+					<div class="title text">Sport</div>
+				</div>
+			</div>
+
+			<div class="example">
+				<a href=#><img src="images\meuble.jpeg" alt="tile3" width="200"
+					height="320px" alt="house" /></a>
+				<div class="fadedbox">
+					<div class="title text">Ameublement</div>
+				</div>
+			</div>
+
+			<div class="example">
+				<a href=#><img src="images\mode.jpeg" alt="tile3" width="200"
+					height="320px" alt="house" /></a>
+				<div class="fadedbox">
+					<div class="title text">Mode</div>
+				</div>
 			</div>
 		</div>
-
-		<div class="example">
-			<a href=#><img src="images\sport.jpeg" alt="tile3" width="200"
-				height="320px" alt="house" /></a>
-			<div class="fadedbox">
-				<div class="title text">Sport</div>
-			</div>
-		</div>
-
-		<div class="example">
-			<a href=#><img src="images\meuble.jpeg" alt="tile3" width="200"
-				height="320px" alt="house" /></a>
-			<div class="fadedbox">
-				<div class="title text">Ameublement</div>
-			</div>
-		</div>
-
-		<div class="example">
-			<a href=#><img src="images\mode.jpeg" alt="tile3" width="200"
-				height="320px" alt="house" /></a>
-			<div class="fadedbox">
-				<div class="title text">Mode</div>
-			</div>
-		</div>
-	</div>
-
+	</form>
 	<h2>Tous nos biens disponibles :</h2>
 
 	<div id="AuctionsAll">
