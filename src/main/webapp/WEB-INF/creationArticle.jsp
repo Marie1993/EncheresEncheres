@@ -80,7 +80,7 @@ a:link
 		<div>
 			<label for="sellerPrice">Votre prix de vente :</label>
 		</div>
-		<input type="number" name="sellerPrice" id="sellerPrice" />
+		<input type="number" name="sellerPrice" id="sellerPrice" placeholder="0"/>
 		
 		<div>
 			<label for="startAuction">Debut de l'enchère :</label>
