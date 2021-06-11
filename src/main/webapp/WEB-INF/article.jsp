@@ -1,7 +1,8 @@
+<%@page import="fr.eni.ecole.messages.LecteurMessages"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+	<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,8 +15,6 @@ a:link {
 </style>
 <title></title>
 </head>
-<body>
-	
 		<header>
 			<h1>ENI-Enchères</h1>
 			<c:if test="${sessionScope.connexion eq null}">
@@ -27,6 +26,27 @@ a:link {
 				<%@ include file="header_connected.jsp"%>
 			</c:if>
 		</header>
+<body>
+
+<div class="error_message">
+	<%
+			List<Integer> listeCodesErreurs = (List<Integer>)request.getAttribute("listeCodesErreurs");
+			if(listeCodesErreurs!=null)
+			{
+	
+				for(int codeErreur:listeCodesErreurs)
+				{
+		
+					%>
+					
+					<p><%=LecteurMessages.getMessageErreur(codeErreur)%></p>
+		<%	
+					
+				}
+			}
+		%>
+</div> 
+	
 
 		
 <div id="article">
@@ -38,7 +58,8 @@ a:link {
 
 			<div>Catégorie : ${sessionScope ['article'].category.wording}</div>
 
-			<div>Début de l'enchère : ${sessionScope ['article'].auctionStartingDate}</div>
+			<div>Début de l'enchère : ${sessionScope ['article'].auctionStartingDate}
+			</div>
 
 			<div>Fin de l'enchère : ${sessionScope ['article'].auctionEndingDate}</div>
 

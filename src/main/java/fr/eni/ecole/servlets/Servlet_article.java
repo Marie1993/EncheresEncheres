@@ -2,6 +2,8 @@ package fr.eni.ecole.servlets;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import fr.eni.ecole.bll.ArticleManager;
 import fr.eni.ecole.bo.ArticleSold;
@@ -47,21 +49,39 @@ public class Servlet_article extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response) Méthode pour enchérir
+	 *      response) Mï¿½thode pour enchï¿½rir
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		List<Integer>listeCodesErreurs = new ArrayList<>();
 		HttpSession session = request.getSession();
-		// On récupère l'user de la session en cours.
+		// On rï¿½cupï¿½re l'user de la session en cours.
 		Users user = (Users) session.getAttribute("User");
-		// On récupère l'article en cours.
+		// On rï¿½cupï¿½re l'article en cours.
 		ArticleSold article = (ArticleSold) session.getAttribute("article");
-		// On récupère l'enchère faite.
+		// On rï¿½cupï¿½re l'enchï¿½re faite.
 		int sellingPrice = Integer.parseInt(request.getParameter("sellingPrice"));
-		// On change le sellingPrice ainsi que l'utilisateur qui est associé à l'article
-		// (du vendeur à l'enchéreur)
-		// Avant cela, il faut faire les modifs pour récupérer l'ancien acheteur et
-		// l'ancien prix. Avec ça, on peut restituer l'argent
+		// On change le sellingPrice ainsi que l'utilisateur qui est associï¿½ ï¿½ l'article
+		// (du vendeur ï¿½ l'enchï¿½reur)
+		// Avant cela, il faut faire les modifs pour rï¿½cupï¿½rer l'ancien acheteur et
+		// l'ancien prix. Avec ï¿½a, on peut restituer l'argent
+		if ( sellingPrice > user.getCredit())
+		{
+			 listeCodesErreurs.add(CodesResultatServlets.CREDIT_NOT_OK);
+		}
+		
+		
+		
+		if(listeCodesErreurs.size()>0) {
+			//je renvoie les erreurs et retourne sur le profil
+			request.setAttribute("listeCodesErreurs", listeCodesErreurs);
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/article.jsp");
+			rd.forward(request, response);
+			System.out.println("je suis dans le if");
+		}
+		else 
+		{
+			
 
 		try {
 			userDAO.Update_credit_refund(article);
@@ -71,19 +91,19 @@ public class Servlet_article extends HttpServlet {
 		// On update maintenant le nouveau prix et nouvel acheteur.
 		article.setSellingPrice(sellingPrice);
 		article.setUser(user);
-		// On créé un booléen qui nous permet de voir si l'utilisateur a déjà fait une
-		// enchère sur l'objet.
+		// On crï¿½ï¿½ un boolï¿½en qui nous permet de voir si l'utilisateur a dï¿½jï¿½ fait une
+		// enchï¿½re sur l'objet.
 		Boolean auction;
 		try {
 			auction = articleManager.Verify_auction(article);
 			if (auction == false) {
 				articleManager.Insert_auction(article);
 			} else
-				// Sinon ça update la ligne avec la nouvelle enchère
+				// Sinon ï¿½a update la ligne avec la nouvelle enchï¿½re
 				articleManager.Update_auction(article);
-			// On met à jour l'article avec le nouveau prix.
+			// On met ï¿½ jour l'article avec le nouveau prix.
 			articleManager.Update_article(sellingPrice, article.getArticleNum());
-			// On retire à l'utilisateur le crédit utilisé.
+			// On retire ï¿½ l'utilisateur le crï¿½dit utilisï¿½.
 			try {
 				userDAO.Update_credit_subtract(article);
 			} catch (SQLException e) {
@@ -97,7 +117,7 @@ public class Servlet_article extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		// S'il n'a jamais fait d'enchère, cela en créé une.
+		// S'il n'a jamais fait d'enchï¿½re, cela en crï¿½ï¿½ une.
 		// On renvoie sur la page.
 
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/article.jsp");
@@ -105,4 +125,4 @@ public class Servlet_article extends HttpServlet {
 
 	}
 
-}
+} }
