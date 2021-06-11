@@ -35,86 +35,143 @@ a:link {
 
 </head>
 <body>
-<div class="recherche">
-	<img src="images\ban2.jpeg" id="ban" />
+	<div class="recherche">
+		<img src="images\ban2.jpeg" id="ban" />
 
 
 
-	<h3>un bien particulier à touver ? </h3>
-	<label for="site-search"></label>
-	<input type="search" id="site-search" name="q"
-		aria-label="Search through site content"
-		placeholder="Le nom de l'article contient">
+		<h3>Un bien particulier à trouver ?</h3>
+		<label for="site-search"></label> <input type="search"
+			id="site-search" name="q" aria-label="Search through site content"
+			placeholder="Le nom de l'article contient">
 
-	<button class="button">Rechercher</button>
-</div>
-	
-	
-	
+		<button class="button">Rechercher</button>
+	</div>
+
+
+
 	<div id="menu">
 
-    <div class="example">
-      <a href=#><img src="images\inf.jpeg" alt="tile3" width="200" height="320px" alt="house" /></a>
-      <div class="fadedbox">
-        <div class="title text"> Informatique </div>
-      </div>
-    </div>
-    
-    <div class="example">
-      <a href=#><img src="images\sport.jpeg" alt="tile3" width="200" height="320px" alt="house" /></a>
-      <div class="fadedbox">
-        <div class="title text"> Sport </div>
-      </div>
-    </div>
-	
-    <div class="example">
-      <a href=#><img src="images\meuble.jpeg" alt="tile3" width="200" height="320px" alt="house" /></a>
-      <div class="fadedbox">
-        <div class="title text"> Ameublement </div>
-      </div>
-    </div>
-    
-    <div class="example">
-      <a href=#><img src="images\mode.jpeg" alt="tile3" width="200" height="320px" alt="house" /></a>
-      <div class="fadedbox">
-        <div class="title text"> Mode </div>
-      </div>
-    </div>
+		<div class="example">
+			<a href=#><img src="images\inf.jpeg" alt="tile3" width="200"
+				height="320px" alt="house" /></a>
+			<div class="fadedbox">
+				<div class="title text">Informatique</div>
+			</div>
+		</div>
+
+		<div class="example">
+			<a href=#><img src="images\sport.jpeg" alt="tile3" width="200"
+				height="320px" alt="house" /></a>
+			<div class="fadedbox">
+				<div class="title text">Sport</div>
+			</div>
+		</div>
+
+		<div class="example">
+			<a href=#><img src="images\meuble.jpeg" alt="tile3" width="200"
+				height="320px" alt="house" /></a>
+			<div class="fadedbox">
+				<div class="title text">Ameublement</div>
+			</div>
+		</div>
+
+		<div class="example">
+			<a href=#><img src="images\mode.jpeg" alt="tile3" width="200"
+				height="320px" alt="house" /></a>
+			<div class="fadedbox">
+				<div class="title text">Mode</div>
+			</div>
+		</div>
 	</div>
-		
-	<h2>Touts nos biens disponibles : </h2>
-	
-<div id="AuctionsAll">
 
-	
-	<div class="listAuction">
-	<c:forEach items="${liste_article}" var="ArticleSold">
+	<h2>Tous nos biens disponibles :</h2>
+
+	<div id="AuctionsAll">
 
 
-		
+		<div class="listAuction">
+			<c:forEach items="${liste_article}" var="ArticleSold">
 
-			<h4><a
-				href="<c:url value="/Servlet_article">
+
+				<h4>
+					<a
+						href="<c:url value="/Servlet_article">
             <c:param name="num" value="${ArticleSold.articleNum}"/>
         </c:url>
-    ">${ArticleSold.articleName}</a></h4>
-    
-		<div>	Prix : ${ArticleSold.sellingPrice} </div>
-		
-		<div>Fin de l'enchère :
-			${ArticleSold.auctionEndingDate} </div>
+    ">${ArticleSold.articleName}</a>
+				</h4>
+
+				<div>Prix : ${ArticleSold.sellingPrice}</div>
+
+				<div>Fin de l'enchère : ${ArticleSold.auctionEndingDate}</div>
 			Vendeur : <a
-				href="<c:url value="/Servlet_show_user">
+					href="<c:url value="/Servlet_show_user">
             <c:param name="nickname" value="${ArticleSold.user.nickname}"/>
         </c:url>
-    ">${ArticleSold.user.nickname}</a></div>
+    ">${ArticleSold.user.nickname}</a>
+		</div>
 
 
-		
-	<div class="listAuction">
-	</c:forEach>
 
-</div></div>
+		<div class="listAuction">
+			</c:forEach>
+
+		</div>
+	</div>
+
+	<c:if test="${sessionScope.connexion != null}">
+
+		<h2>Mes enchères remportées :</h2>
+
+		<div id="AuctionsAll">
+
+
+			<div class="liste_article_won">
+				<c:forEach items="${liste_article_won}" var="ArticleWon">
+
+
+
+
+					<h4>
+						<a
+							href="<c:url value="/Servlet_article">
+            <c:param name="num" value="${ArticleWon.articleNum}"/>
+        </c:url>
+    ">${ArticleWon.articleName}</a>
+					</h4>
+
+				</c:forEach>
+
+			</div>
+		</div>
+
+		<h2>Mes enchères perdues :</h2>
+
+		<div id="AuctionsAll">
+
+
+			<div class="liste_article_lost">
+				<c:forEach items="${liste_article_lost}" var="ArticleLost">
+
+
+
+
+					<h4>
+						<a
+							href="<c:url value="/Servlet_article">
+            <c:param name="num" value="${ArticleLost.articleNum}"/>
+        </c:url>
+    ">${ArticleLost.articleName}</a>
+					</h4>
+
+				</c:forEach>
+
+			</div>
+		</div>
+
+	</c:if>
+
 
 
 

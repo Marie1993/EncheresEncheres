@@ -28,6 +28,9 @@ public interface ArticleDAO {
 	
 	ArrayList<ArticleSold> Select_user_auctions(Users user) throws SQLException;
 	
+	public ArrayList<ArticleSold> Select_article_won_user (Users user) throws SQLException;
+
+	ArrayList<ArticleSold> Select_article_lost_user(Users user) throws SQLException;
 	
 
 }
