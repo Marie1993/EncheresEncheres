@@ -49,11 +49,11 @@ a:link {
 	</div>
 
 
-	<form>
+	
 		<div id="menu">
 
 			<div class="example">
-				<a href=#><img src="images\inf.jpeg" alt="tile3" width="200"
+				<a href="<c:url value="/Servlet_selection"><c:param name="numCat" value="1"/></c:url>"><img src="images\inf.jpeg" alt="tile3" width="200"
 					height="320px" alt="house" /></a>
 				<div class="fadedbox">
 					<div class="title text">Informatique</div>
@@ -69,7 +69,7 @@ a:link {
 			</div>
 
 			<div class="example">
-				<a href=#><img src="images\meuble.jpeg" alt="tile3" width="200"
+				<a href=/Servlet_selection><img src="images\meuble.jpeg" alt="tile3" width="200"
 					height="320px" alt="house" /></a>
 				<div class="fadedbox">
 					<div class="title text">Ameublement</div>
@@ -77,14 +77,14 @@ a:link {
 			</div>
 
 			<div class="example">
-				<a href=#><img src="images\mode.jpeg" alt="tile3" width="200"
+				<a href="<c:url value="/Servlet_selection"><c:param name="numCat" value="2"/></c:url>"><img src="images\mode.jpeg" alt="tile3" width="200"
 					height="320px" alt="house" /></a>
 				<div class="fadedbox">
 					<div class="title text">Mode</div>
 				</div>
 			</div>
 		</div>
-	</form>
+	
 	<h2>Tous nos biens disponibles :</h2>
 
 	<div id="AuctionsAll">
