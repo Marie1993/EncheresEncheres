@@ -35,12 +35,16 @@ public class Servlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		ArticleDAOJdbcImpl articleDAO = new ArticleDAOJdbcImpl ();
 		try {
+			// On affiche la liste de tous les articles.
 			ArrayList <ArticleSold> liste_article = articleDAO.Select_all();
 			session.setAttribute("liste_article", liste_article);
 			if (session.getAttribute("connexion") != null)
+				// Si l'user est connecté : on affiche les enchères finies, les gagnées et les perdues
 			{Users user = (Users) session.getAttribute("User");
 			ArrayList <ArticleSold> liste_article_won = articleDAO.Select_article_won_user(user);
 			session.setAttribute("liste_article_won", liste_article_won);
+			ArrayList <ArticleSold> liste_article_lost = articleDAO.Select_article_lost_user(user);
+			session.setAttribute("liste_article_lost", liste_article_lost);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

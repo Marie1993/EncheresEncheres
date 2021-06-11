@@ -94,8 +94,6 @@ a:link {
 			<c:forEach items="${liste_article}" var="ArticleSold">
 
 
-
-
 				<h4>
 					<a
 						href="<c:url value="/Servlet_article">
@@ -143,17 +141,37 @@ a:link {
     ">${ArticleWon.articleName}</a>
 					</h4>
 
-					<div>Prix : ${ArticleWon.sellingPrice}</div>
+				</c:forEach>
+
+			</div>
+		</div>
+
+		<h2>Mes enchères perdues :</h2>
+
+		<div id="AuctionsAll">
+
+
+			<div class="liste_article_lost">
+				<c:forEach items="${liste_article_lost}" var="ArticleLost">
 
 
 
-					<div class="listAuction">
+
+					<h4>
+						<a
+							href="<c:url value="/Servlet_article">
+            <c:param name="num" value="${ArticleLost.articleNum}"/>
+        </c:url>
+    ">${ArticleLost.articleName}</a>
+					</h4>
+
 				</c:forEach>
 
 			</div>
 		</div>
 
 	</c:if>
+
 
 
 

@@ -24,6 +24,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	private final String SELECT_ARTICLE_USER = "SELECT DISTINCT Articles_vendus.no_article, Articles_vendus.nom_article, Articles_vendus.description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, CATEGORIES.no_categorie, CATEGORIES.libelle, UTILISATEURS.no_utilisateur,UTILISATEURS.pseudo, Retraits.no_article, Retraits.rue, Retraits.code_postal, Retraits.ville  FROM ARTICLES_VENDUS INNER JOIN ENCHERES on Articles_vendus.no_article = Encheres.no_article INNER JOIN CATEGORIES on Articles_vendus.no_categorie = CATEGORIES.no_categorie INNER JOIN UTILISATEURS on ARTICLES_VENDUS.no_utilisateur = UTILISATEURS.no_utilisateur INNER JOIN RETRAITS on ARTICLES_VENDUS.no_article = RETRAITS.no_article WHERE Utilisateurs.pseudo = ?;";
 	private final String SELECT_ARTICLE_AUCTION = "SELECT DISTINCT Articles_vendus.no_article, Articles_vendus.nom_article, Articles_vendus.description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, CATEGORIES.no_categorie, CATEGORIES.libelle, UTILISATEURS.no_utilisateur,UTILISATEURS.pseudo, Retraits.no_article, Retraits.rue, Retraits.code_postal, Retraits.ville  FROM ARTICLES_VENDUS INNER JOIN ENCHERES on Articles_vendus.no_article = Encheres.no_article INNER JOIN CATEGORIES on Articles_vendus.no_categorie = CATEGORIES.no_categorie INNER JOIN UTILISATEURS on ARTICLES_VENDUS.no_utilisateur = UTILISATEURS.no_utilisateur INNER JOIN RETRAITS on ARTICLES_VENDUS.no_article = RETRAITS.no_article WHERE Encheres.no_utilisateur = ? and Articles_vendus.date_fin_encheres > SYSDATETIME();";
 	private final String SELECT_ARTICLE_WON_USER = "SELECT DISTINCT Articles_vendus.no_article, Articles_vendus.nom_article, ARTICLES_VENDUS.prix_vente, UTILISATEURS.pseudo FROM ENCHERES INNER JOIN UTILISATEURS on Encheres.no_utilisateur = UTILISATEURS.no_utilisateur INNER JOIN ARTICLES_VENDUS on Articles_vendus.no_article = Encheres.no_article WHERE Articles_vendus.date_fin_encheres < SYSDATETIME() and Encheres.montant_enchere = ARTICLES_VENDUS.prix_vente and Utilisateurs.pseudo = ?;";
+	private final String SELECT_ARTICLE_LOST_USER = "SELECT DISTINCT Articles_vendus.no_article, Articles_vendus.nom_article, ARTICLES_VENDUS.prix_vente, UTILISATEURS.pseudo FROM ENCHERES INNER JOIN UTILISATEURS on Encheres.no_utilisateur = UTILISATEURS.no_utilisateur INNER JOIN ARTICLES_VENDUS on Articles_vendus.no_article = Encheres.no_article WHERE Articles_vendus.date_fin_encheres < SYSDATETIME() and Encheres.montant_enchere = ARTICLES_VENDUS.prix_vente and Utilisateurs.pseudo != ? and Encheres.no_utilisateur = ?;";
 	private final String INSERT_WITHDRAWAL = "INSERT INTO Retraits values (?,?,?,?);";
 	private final String INSERT_AUCTION = "INSERT INTO Encheres values (?,?,?,?);";
 	private final String UPDATE_AUCTION = "UPDATE Encheres SET montant_enchere = ? WHERE no_article = ? and no_utilisateur = ? ;";
@@ -76,6 +77,24 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 		}
 		return liste_article_won;
+	}
+	
+	@Override
+	public ArrayList<ArticleSold> Select_article_lost_user(Users user) throws SQLException {
+		ArrayList<ArticleSold> liste_article_lost = new ArrayList();
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+			PreparedStatement stmt = cnx.prepareStatement(SELECT_ARTICLE_LOST_USER);
+			stmt.setString(1, user.getNickname());
+			stmt.setInt(2, user.getNumUser());
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				Users user_won = new Users (rs.getString(4));
+				ArticleSold article = new ArticleSold(rs.getInt(1), rs.getString(2), rs.getInt(3), user_won);
+				liste_article_lost.add(article);
+			}
+
+		}
+		return liste_article_lost;
 	}
 	
 	@Override
